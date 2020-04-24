@@ -1,0 +1,1 @@
+const int BG_EBEBEB=0xffEBEBEB;

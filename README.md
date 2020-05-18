@@ -3,28 +3,24 @@
 CNNIC			 http://mirrors.cnnic.cn/dart-pub						http://mirrors.cnnic.cn/flutter
 腾讯云开源镜像站 https://mirrors.cloud.tencent.com/dart-pub		https://mirrors.cloud.tencent.com/flutter
 					 https://pub.flutter-io.cn								https://storage.flutter-io.cn
-第三方库插件商店地址 https://pub.dev/flutter/packages
-https://github.com/flutter  https://pub.dev  https://flutter.cn/docs  https://book.flutterchina.club  
-https://juejin.im/tag/Flutter  https://segmentfault.com/t/flutter 论坛
-https://www.yuque.com/xytech/flutter 或 https://www.jianshu.com/u/cf5c0e4b1111 闲鱼
-——————————————————————————————————————
-flutter doctor    flutter --version    flutter upgrade    flutter packages get
-flutter channel    flutter channel master
+插件 https://pub.dev/flutter/packages git https://github.com/flutter 书 https://flutter.cn/docs https://book.flutterchina.club https://dart.dev/web
+论坛 https://juejin.im/tag/Flutter https://segmentfault.com/t/flutter
+闲鱼 https://www.yuque.com/xytech/flutter https://www.jianshu.com/u/cf5c0e4b1111 
 ——————————————————————————————————————
 flutter pub global activate webdev  安装webdev
 flutter pub global run webdev  运行webdev
-flutter pub global run webdev serve 启动本地服务--------》 http://localhost:8080   启动web服务器项目？
+flutter pub global run webdev serve 启动本地服务---> http://localhost:8080  
 
 flutter pub global activate stagehand 安装创建web模板项目工具
 flutter pub global run stagehand 运行查看
 flutter pub global run stagehand flutter-web-preview     cd到对应文件夹下根据模板创建项目
-——————————————————— 启动前段页面项目？
+———————————————————  
 flutter config --enable-web 开启项目支持Flutter web
 flutter create 项目名（小写）  
 flutter create .  现有项目创建web文件夹等
 flutter run -d chrome 在项目路径下运行项目
 flutter build web 生成web
-
+———————————————————
 @SuppressLint("SetJavaScriptEnabled")//原生调用flutterwebjs方法
 public void testJS() { webView.loadUrl("javascript:somename()");}
 js.context['somename'] = afunction;//flutterweb定义方法
@@ -34,8 +30,7 @@ webView.addJavascriptInterface(this, "justTest");
 @SuppressLint("JavascriptInterface")
     @JavascriptInterface
     public String hello(String str) { 
-        return "hello";
-    }
+        return "hello"; }
 
 js.context['afunname'] = (str){};//通过js调用flutter方法
 js.context.callMethod("afunname", ["a_str_data"]);
@@ -55,7 +50,7 @@ compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
 }
-———————————————————混合开发 flutter_boost
+———————————————————flutter_boost
 //flutter端
   flutter_boost:
     git:
@@ -69,7 +64,7 @@ compileOptions {
 Builder和StatefulBuilder 相当于 stateless stateful 的匿名方式 可以有效的缩小context范围。
 Provider.of<ViewModel>(context, listen: false).run() 取数据不刷新 
 https://juejin.im/post/5e924273f265da47f079379c gradle 知识
-
+java asm 技术
 toutoule需要修改吗 把测试的代码删除 版本更新整体流程 第三方广告（可能粘贴的不全 在审核一下）  极光埋点
 ——————————————————————————————————————
 https://github.com/yang7229693/flutter-study/tree/master/post 控件解释

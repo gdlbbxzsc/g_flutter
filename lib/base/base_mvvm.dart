@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 
 abstract class BaseViewModel with ChangeNotifier {
   BaseViewModel() {
@@ -9,30 +10,39 @@ abstract class BaseViewModel with ChangeNotifier {
   void init();
 }
 
-// ignore: must_be_immutable
-abstract class BaseWidget<T extends BaseViewModel> extends StatelessWidget {
-  T viewModel;
+abstract class BaseWidget extends StatelessWidget {
+  Widget buildView(BuildContext context);
+}
 
-  BaseWidget({Key key}) : super(key: key) {
-    viewModel = createViewModel();
-  }
-
+abstract class MultiProviderBaseWidget extends BaseWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<T>.value(
-      value: viewModel,
-//      child: Selector<T, bool>(
-//        selector: (_, T) => T.created,
-//        builder: (BuildContext context, value, Widget child) {
-//          return value ? buildView(context) : initView(context);
-//        },
-//      ),
-      child: buildView(context),
+    return MultiProvider(
+      providers: createProviders(),
+      child: Builder(builder: buildView),
     );
   }
 
-//  Widget initView(BuildContext context);
+  List<SingleChildWidget> createProviders();
+
+  T viewModel<T extends BaseViewModel>(BuildContext context) {
+    return Provider.of<T>(context, listen: false);
+  }
+}
+
+abstract class ChangeNotifierProviderBaseWidget<T extends BaseViewModel>
+    extends BaseWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<T>.value(
+      value: createViewModel(),
+      child: Builder(builder: buildView),
+    );
+  }
+
   T createViewModel();
 
-  Widget buildView(BuildContext context);
+  T viewModel(BuildContext context) {
+    return Provider.of<T>(context, listen: false);
+  }
 }

@@ -1,37 +1,82 @@
 import 'package:flutter/material.dart';
 import 'package:g_flutter/base/base_mvvm.dart';
 import 'package:g_flutter/pages/login/viewmodel.dart';
+import 'package:g_flutter/widgets/common/texts.dart';
+import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class LoginWidget extends BaseWidget<LoginViewModel> {
-  @override
-  LoginViewModel createViewModel() {
-    return LoginViewModel();
-  }
-
+class LoginWidget extends MultiProviderBaseWidget {
   @override
   Widget buildView(BuildContext context) {
-    print("buildView-------");
+    var vm = viewModel<LoginViewModel>(context);
     return Scaffold(
         body: Column(
       children: <Widget>[
-        TextField(controller: viewModel.usernameController),
-        TextField(controller: viewModel.passwordController),
-        Selector<LoginViewModel, int>(
-          selector: (_, T) => T.state,
+        TextField(controller: vm.usernameController),
+        TextField(controller: vm.passwordController),
+        RaisedButton(
+          onPressed: () {
+            vm.login();
+          },
+          child: Selector<LoginViewModel, String>(
+            selector: (_, T) {
+              return T.btnText;
+            },
+            builder: (BuildContext context, value, Widget child) {
+              return Text(value);
+            },
+          ),
+        ),
+        Selector<FatherContentModel, String>(
+          selector: (_, T) {
+            if (T == null) return "ffffffffff";
+            return T.faStr;
+          },
           builder: (BuildContext context, value, Widget child) {
-            return RaisedButton(
-              onPressed: viewModel.login,
-              child: value == 0
-                  ? Text("${viewModel.str}")
-                  : value == 1
-                      ? CircularProgressIndicator()
-                      : value == 2 ? Icon(Icons.done) : Icon(Icons.cancel),
-            );
+            return CommonText.black13(value);
+          },
+        ),
+        Selector<SonContentModel, String>(
+          selector: (_, T) {
+            if (T == null) return "sssssssssss";
+            return T.sonStr;
+          },
+          builder: (BuildContext context, value, Widget child) {
+            return CommonText.black13(value);
           },
         ),
       ],
     ));
+  }
+
+  @override
+  List<SingleChildWidget> createProviders(BuildContext context) {
+    var lvm = new LoginViewModel();
+    return [
+      ChangeNotifierProvider<LoginViewModel>(create: (BuildContext context) {
+        return lvm;
+      }),
+      ChangeNotifierProxyProvider<LoginViewModel, FatherContentModel>(
+        create: (_) {
+          if (lvm == null) return null;
+          return lvm.fcm;
+        },
+        update: (context, value, previous) {
+          if (value == null) return null;
+          return value.fcm;
+        },
+      ),
+      ChangeNotifierProxyProvider<FatherContentModel, SonContentModel>(
+        create: (_) {
+          if (lvm == null || lvm.fcm == null) return null;
+          return lvm.fcm.son;
+        },
+        update: (context, value, previous) {
+          if (value == null) return null;
+          return value.son;
+        },
+      ),
+    ];
   }
 }

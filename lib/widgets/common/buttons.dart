@@ -69,13 +69,11 @@ class CommonButton extends StatelessWidget {
         alignment: Alignment.center,
         width: width,
         height: height,
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: fontSize,
-              color: fontColor,
-            ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: fontColor,
           ),
         ),
         padding:

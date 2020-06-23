@@ -12,48 +12,35 @@ class SelectorM<O extends Object, R extends Object> extends Selector<O, R> {
             builder: builder,
             selector: (BuildContext buildContext, O obj) {
               if (obj == null) return def;
-              return selector(buildContext, obj);
+              R res = selector(buildContext, obj);
+              if (res == null) return def;
+              return res;
             });
 }
 
 //返回数据为string类型时调用
-class SelectorS<O extends Object> extends Selector<O, String> {
+class SelectorS<O extends Object> extends SelectorM<O, String> {
   SelectorS(
       {Function(BuildContext context, String value, Widget child) builder,
       Function(BuildContext buildContext, O obj) selector,
       String def = ""})
-      : super(
-            builder: builder,
-            selector: (BuildContext buildContext, O obj) {
-              if (obj == null) return def;
-              return selector(buildContext, obj);
-            });
+      : super(builder: builder, selector: selector, def: def);
 }
 
 //int
-class SelectorI<O extends Object> extends Selector<O, int> {
+class SelectorI<O extends Object> extends SelectorM<O, int> {
   SelectorI(
       {Function(BuildContext context, int value, Widget child) builder,
       Function(BuildContext buildContext, O obj) selector,
       int def = 0})
-      : super(
-            builder: builder,
-            selector: (BuildContext buildContext, O obj) {
-              if (obj == null) return def;
-              return selector(buildContext, obj);
-            });
+      : super(builder: builder, selector: selector, def: def);
 }
 
 //bool
-class SelectorB<O extends Object> extends Selector<O, bool> {
+class SelectorB<O extends Object> extends SelectorM<O, bool> {
   SelectorB(
       {Function(BuildContext context, bool value, Widget child) builder,
       Function(BuildContext buildContext, O obj) selector,
       bool def = false})
-      : super(
-            builder: builder,
-            selector: (BuildContext buildContext, O obj) {
-              if (obj == null) return def;
-              return selector(buildContext, obj);
-            });
+      : super(builder: builder, selector: selector, def: def);
 }

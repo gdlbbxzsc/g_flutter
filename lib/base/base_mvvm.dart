@@ -60,12 +60,12 @@ abstract class ChangeNotifierProviderBaseWidget<T extends BaseViewModel>
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(
-      value: createViewModel(),
+      value: createViewModel(context),
       child: Builder(builder: buildView),
     );
   }
 
-  T createViewModel();
+  T createViewModel(BuildContext context);
 
   T viewModel(BuildContext context) {
     return Provider.of<T>(context, listen: false);

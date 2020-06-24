@@ -12,8 +12,13 @@ class LoginViewModel extends BaseViewModel {
 
   FatherContentModel fcm;
 
+  int num = 222;
+
+  LoginViewModel(this.num, {context}) : super(context: context);
+
   @override
   void initViewModel() {
+    print("object=============$num=======$context");
     Future<String>.delayed(Duration(seconds: 5), () {
       return "社会我凡哥";
     }).then((s) {

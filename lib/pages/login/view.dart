@@ -56,7 +56,7 @@ class LoginWidget extends MultiProviderBaseWidget {
 
     return [
       ChangeNotifierProvider<LoginViewModel>(create: (BuildContext context) {
-        return LoginViewModel();
+        return LoginViewModel(333,context: context);
       }),
       ChangeNotifierProxyProvider<LoginViewModel, FatherContentModel>(
         create: (_) {

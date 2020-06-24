@@ -18,7 +18,6 @@ class LoginViewModel extends BaseViewModel {
 
   @override
   void initViewModel() {
-    print("object=============$num=======$context");
     Future<String>.delayed(Duration(seconds: 5), () {
       return "社会我凡哥";
     }).then((s) {

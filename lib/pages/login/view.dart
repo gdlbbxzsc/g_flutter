@@ -52,15 +52,15 @@ class LoginWidget extends MultiProviderBaseWidget {
 
   @override
   List<SingleChildWidget> createProviders(BuildContext context) {
-    var lvm = new LoginViewModel();
+    print("createProviders=================");
+
     return [
       ChangeNotifierProvider<LoginViewModel>(create: (BuildContext context) {
-        return lvm;
+        return LoginViewModel();
       }),
       ChangeNotifierProxyProvider<LoginViewModel, FatherContentModel>(
         create: (_) {
-          if (lvm == null) return null;
-          return lvm.fcm;
+          return null;
         },
         update: (context, value, previous) {
           if (value == null) return null;
@@ -69,8 +69,7 @@ class LoginWidget extends MultiProviderBaseWidget {
       ),
       ChangeNotifierProxyProvider<FatherContentModel, SonContentModel>(
         create: (_) {
-          if (lvm == null || lvm.fcm == null) return null;
-          return lvm.fcm.son;
+          return null;
         },
         update: (context, value, previous) {
           if (value == null) return null;

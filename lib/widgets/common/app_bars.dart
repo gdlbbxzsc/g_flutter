@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+//通用标题栏
 class CommonAppBar extends AppBar {
+//  只带标题
   CommonAppBar(String text,
       {Color titleColor = Colors.black,
       Color backgroundColor = Colors.white,
+      bool Function(BuildContext context) onBackPressed,
       PreferredSizeWidget bottom})
       : super(
             backgroundColor: backgroundColor,
@@ -13,8 +16,28 @@ class CommonAppBar extends AppBar {
               style: TextStyle(fontSize: 18, color: titleColor),
             ),
             bottom: bottom);
+
+//带返回按钮
+  CommonAppBar.back(String text,
+      {Color titleColor = Colors.black,
+      Color backgroundColor = Colors.white,
+      VoidCallback onBackPressed,
+      PreferredSizeWidget bottom})
+      : super(
+            backgroundColor: backgroundColor,
+            leading: BackButton(
+              color: titleColor,
+              onPressed: onBackPressed,
+            ),
+            centerTitle: true,
+            title: new Text(
+              text,
+              style: TextStyle(fontSize: 18, color: titleColor),
+            ),
+            bottom: bottom);
 }
 
+//自定义标题栏
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {

@@ -13,6 +13,18 @@ class Line extends SizedBox {
         );
 }
 
+class LineV extends SizedBox {
+  LineV(
+      {double width = 1,
+      double height = double.infinity,
+      Color color = const Color(0xFFD6D6D6)})
+      : super(
+          width: width,
+          height: height,
+          child: DecoratedBox(decoration: BoxDecoration(color: color)),
+        );
+}
+
 ///通过文字删除线实现虚线
 class LineDashText extends StatelessWidget {
   final double width;

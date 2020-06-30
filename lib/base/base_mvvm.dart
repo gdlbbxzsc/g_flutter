@@ -50,7 +50,7 @@ abstract class MultiProviderBaseWidget extends BaseWidget {
 
   List<SingleChildWidget> createProviders(BuildContext context);
 
-  T viewModel<T extends BaseViewModel>(BuildContext context) {
+  T getViewModel<T extends BaseViewModel>(BuildContext context) {
     return Provider.of<T>(context, listen: false);
   }
 }
@@ -67,7 +67,7 @@ abstract class ChangeNotifierProviderBaseWidget<T extends BaseViewModel>
 
   T createViewModel(BuildContext context);
 
-  T viewModel(BuildContext context) {
+  T getViewModel(BuildContext context) {
     return Provider.of<T>(context, listen: false);
   }
 }

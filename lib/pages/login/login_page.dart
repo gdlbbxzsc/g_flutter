@@ -6,10 +6,10 @@ import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class LoginWidget extends MultiProviderBaseWidget {
+class LoginPageWidget extends MultiProviderBaseWidget {
   @override
   Widget buildView(BuildContext context) {
-    var vm = viewModel<LoginViewModel>(context);
+    var vm = getViewModel<LoginViewModel>(context);
     return Scaffold(
         body: Column(
       children: <Widget>[
@@ -56,7 +56,7 @@ class LoginWidget extends MultiProviderBaseWidget {
 
     return [
       ChangeNotifierProvider<LoginViewModel>(create: (BuildContext context) {
-        return LoginViewModel(333,context: context);
+        return LoginViewModel(333, context: context);
       }),
       ChangeNotifierProxyProvider<LoginViewModel, FatherContentModel>(
         create: (_) {

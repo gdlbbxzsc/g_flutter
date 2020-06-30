@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g_flutter/widgets/common/buttons.dart';
 
 //通用标题栏
 class CommonAppBar extends AppBar {
@@ -18,14 +19,49 @@ class CommonAppBar extends AppBar {
             bottom: bottom);
 
 //带返回按钮
-  CommonAppBar.back(String text,
+//  CommonAppBar.back(String text,
+//      {Color titleColor = Colors.black,
+//        Color backgroundColor = Colors.white,
+//        VoidCallback onBackPressed,
+//        PreferredSizeWidget bottom})
+//      : super(
+//      backgroundColor: backgroundColor,
+//      leading: BackButton(
+//        color: titleColor,
+//        onPressed: onBackPressed,
+//      ),
+//      centerTitle: true,
+//      title: new Text(
+//        text,
+//        style: TextStyle(fontSize: 18, color: titleColor),
+//      ),
+//      bottom: bottom);
+  CommonAppBar.backBlack(String text,
       {Color titleColor = Colors.black,
       Color backgroundColor = Colors.white,
       VoidCallback onBackPressed,
       PreferredSizeWidget bottom})
       : super(
             backgroundColor: backgroundColor,
-            leading: BackButton(
+            leading: BackButtonIos(
+              color: titleColor,
+              onPressed: onBackPressed,
+            ),
+            centerTitle: true,
+            title: new Text(
+              text,
+              style: TextStyle(fontSize: 18, color: titleColor),
+            ),
+            bottom: bottom);
+
+  CommonAppBar.backWhite(String text,
+      {Color titleColor = Colors.white,
+      Color backgroundColor = Colors.redAccent,
+      VoidCallback onBackPressed,
+      PreferredSizeWidget bottom})
+      : super(
+            backgroundColor: backgroundColor,
+            leading: BackButtonIos(
               color: titleColor,
               onPressed: onBackPressed,
             ),

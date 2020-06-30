@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:taochaoshi/widgets/common/buttons.dart';
-import 'package:taochaoshi/widgets/common/lines.dart';
-import 'package:taochaoshi/widgets/common/texts.dart';
+import 'package:g_flutter/widgets/common/buttons.dart';
+import 'package:g_flutter/widgets/common/lines.dart';
+import 'package:g_flutter/widgets/common/texts.dart';
 
+// ignore: must_be_immutable
 class CommonDialog extends Dialog {
   String title;
   String message;

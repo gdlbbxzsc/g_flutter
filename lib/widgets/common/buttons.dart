@@ -46,6 +46,21 @@ class CommonButton extends StatelessWidget {
       this.onTap})
       : super(key: key);
 
+  const CommonButton.forCommonDialog(
+      {Key key,
+      this.text = "取消",
+      this.fontSize = 15,
+      this.fontColor = Colors.white,
+      this.backGroundColor = Colors.red,
+      this.borderColor = Colors.red,
+      this.width,
+      this.height,
+      this.paddingTB = 6,
+      this.paddingLR = 12,
+      this.borderRadius = 50,
+      this.onTap})
+      : super(key: key);
+
   final String text;
 
   final double fontSize;
@@ -86,6 +101,34 @@ class CommonButton extends StatelessWidget {
               Radius.circular(borderRadius == null ? 0 : borderRadius)),
         ),
       ),
+    );
+  }
+}
+
+class BackButtonIos extends StatelessWidget {
+  final Color color;
+  final Function() onPressed;
+
+  const BackButtonIos(
+      {Key key, this.onPressed, this.color = const Color(0xff000000)})
+      : super(key: key);
+
+  const BackButtonIos.black(
+      {Key key, this.onPressed, this.color = const Color(0xff000000)})
+      : super(key: key);
+
+  const BackButtonIos.white(
+      {Key key, this.onPressed, this.color = const Color(0xffffffff)})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back_ios, color: color),
+      onPressed: () {
+        if (onPressed != null) onPressed();
+        Navigator.pop(context);
+      },
     );
   }
 }

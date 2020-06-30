@@ -15,6 +15,9 @@ class CommonText extends Text {
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 16, color: Colors.black));
 
+  const CommonText.black18(String data)
+      : super(data, style: const TextStyle(fontSize: 18, color: Colors.black));
+
   const CommonText.black22(String data)
       : super(data,
             style: const TextStyle(
@@ -22,20 +25,20 @@ class CommonText extends Text {
                 color: Colors.black,
                 fontWeight: FontWeight.w700));
 
-  const CommonText.red26(String data)
-      : super(data, style: const TextStyle(fontSize: 26, color: Colors.red));
+  const CommonText.red13(String data)
+      : super(data, style: const TextStyle(fontSize: 13, color: Colors.red));
 
   const CommonText.red16(String data)
       : super(data, style: const TextStyle(fontSize: 16, color: Colors.red));
 
-  const CommonText.red13(String data)
-      : super(data, style: const TextStyle(fontSize: 13, color: Colors.red));
-
-  const CommonText.grey16(String data)
-      : super(data, style: const TextStyle(fontSize: 16, color: Colors.grey));
+  const CommonText.red26(String data)
+      : super(data, style: const TextStyle(fontSize: 26, color: Colors.red));
 
   const CommonText.grey13(String data)
       : super(data, style: const TextStyle(fontSize: 13, color: Colors.grey));
+
+  const CommonText.grey16(String data)
+      : super(data, style: const TextStyle(fontSize: 16, color: Colors.grey));
 
   const CommonText.white13(String data)
       : super(data, style: const TextStyle(fontSize: 13, color: Colors.white));

@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   provider: ^4.0.4
   flutter_easyrefresh: ^2.1.1 #下拉刷新上拉加载
+  flutter_swiper: ^1.1.6 #轮播图
   dio: ^2.0.7 #网络
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g_flutter/application.dart';
-import 'package:g_flutter/pages/login/list_page.dart';
+import 'package:g_flutter/pages/login/login_page.dart';
 import 'package:g_flutter/route.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginWidget(),
+      home: LoginPageWidget(),
       routes: Routes.routes,
     );
   }

@@ -23,6 +23,9 @@ flutter build web 生成web
 ———————————————————
 import 'dart:js' as js;
 
+  js.context.callMethod("open", ["aa.html"]);
+              js.context["location"]["href"] = "aa.html";
+
 @SuppressLint("SetJavaScriptEnabled")//原生调用flutterwebjs方法
 public void testJS() { webView.loadUrl("javascript:somename()");}
 js.context['somename'] = afunction;//flutterweb定义方法

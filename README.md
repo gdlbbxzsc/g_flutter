@@ -21,6 +21,8 @@ flutter create .  现有项目创建web文件夹等
 flutter run -d chrome 在项目路径下运行项目
 flutter build web 生成web
 ———————————————————
+import 'dart:js' as js;
+
 @SuppressLint("SetJavaScriptEnabled")//原生调用flutterwebjs方法
 public void testJS() { webView.loadUrl("javascript:somename()");}
 js.context['somename'] = afunction;//flutterweb定义方法

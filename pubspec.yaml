@@ -28,6 +28,7 @@ dependencies:
   flutter_swiper: ^1.1.6 #轮播图
   dio: ^2.0.7 #网络
 
+  flutter_screenutil: ^1.0.2 #屏幕适配
 
 
   # The following adds the Cupertino Icons font to your application.

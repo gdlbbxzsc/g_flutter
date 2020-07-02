@@ -36,10 +36,14 @@ class ContentViewModel extends BaseViewModel {
 }
 
 abstract class BaseWidget extends StatelessWidget {
+  const BaseWidget({Key key}) : super(key: key);
+
   Widget buildView(BuildContext context);
 }
 
 abstract class MultiProviderBaseWidget extends BaseWidget {
+  const MultiProviderBaseWidget({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -57,6 +61,8 @@ abstract class MultiProviderBaseWidget extends BaseWidget {
 
 abstract class ChangeNotifierProviderBaseWidget<T extends BaseViewModel>
     extends BaseWidget {
+  const ChangeNotifierProviderBaseWidget({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(

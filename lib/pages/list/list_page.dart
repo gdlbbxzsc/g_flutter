@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:g_flutter/base/base_mvvm.dart';
+import 'package:g_flutter/pages/list/refresh_viewmodel.dart';
 import 'package:g_flutter/pages/list/viewmodel.dart';
 import 'package:g_flutter/widgets/common/app_bars.dart';
 import 'package:g_flutter/widgets/common/lines.dart';
@@ -15,29 +16,35 @@ class ListPageWidget extends MultiProviderBaseWidget {
       ChangeNotifierProvider<ListViewModel>(create: (_) {
         return ListViewModel(context: context);
       }),
-//      ChangeNotifierProxyProvider<InComeViewModel,
-//          MyIncomeEntityDataUserCenterInfo>(
-//        create: (_) {
-//          return null;
-//        },
-//        update: (context, value, previous) {
-//          if (value == null) return null;
-//          return value.userCenterInfo;
-//        },
-//      ),
+      ChangeNotifierProxyProvider<ListViewModel, RefreshViewModel>(
+        create: (_) {
+          return null;
+        },
+        update: (context, value, previous) {
+          if (value == null) return null;
+          return value.refreshViewModel;
+        },
+      ),
     ];
   }
 
   @override
   Widget buildView(BuildContext context) {
-    ListViewModel viewModel = getViewModel<ListViewModel>(context);
     return Scaffold(
       appBar: CommonAppBar.backBlack("列表"),
-      body: Selector<ListViewModel, List<String>>(
-        builder: (context, data, child) => EasyRefresh(
-          controller: viewModel.controller,
+      body: _list(),
+    );
+  }
+
+  Widget _list() {
+    return Consumer<RefreshViewModel>(
+      builder: (context, value, child) {
+        return EasyRefresh(
+          controller: value.controller,
           enableControlFinishLoad: true,
           enableControlFinishRefresh: true,
+          topBouncing: value.topBouncing,
+          bottomBouncing: value.bottomBouncing,
           header: ClassicalHeader(
             infoColor: Colors.grey,
           ),
@@ -49,26 +56,23 @@ class ListPageWidget extends MultiProviderBaseWidget {
               return Line();
             },
             itemBuilder: (BuildContext context, int index) {
-              return _item(data[index]);
+              return _item(value.dataList[index]);
             },
-            itemCount: data.length,
+            itemCount: value.dataList.length,
             shrinkWrap: true,
           ),
-          onRefresh: () async {
-            await Future.delayed(Duration(seconds: 1), () {
-              viewModel.loadDatasFst();
-            });
-          },
-          onLoad: () async {
-            await Future.delayed(Duration(seconds: 1), () {
-              viewModel.loadDatasNxt();
-            });
-          },
-        ),
-        selector: (_, vm) {
-          return vm.dataList;
-        },
-      ),
+          onRefresh: value.topBouncing
+              ? () async {
+                  value.loadDatasFst();
+                }
+              : null,
+          onLoad: value.bottomBouncing
+              ? () async {
+                  value.loadDatasNxt();
+                }
+              : null,
+        );
+      },
     );
   }
 

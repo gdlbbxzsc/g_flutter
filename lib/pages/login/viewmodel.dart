@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:g_flutter/base/base_mvvm.dart';
+import 'package:g_flutter/base/mvvm/view_model.dart';
 
 import 'model.dart';
 

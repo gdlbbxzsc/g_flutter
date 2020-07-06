@@ -1,5 +1,5 @@
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:g_flutter/base/base_mvvm.dart';
+import 'package:g_flutter/base/mvvm/view_model.dart';
 
 class RefreshViewModel<T extends Object> extends BaseViewModel {
   final EasyRefreshController controller = EasyRefreshController();

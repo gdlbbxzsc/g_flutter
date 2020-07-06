@@ -1,39 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:g_flutter/base/mvvm/view_model.dart';
+import 'package:g_flutter/widgets/common/app_bars.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-
-abstract class BaseViewModel with ChangeNotifier {
-  BuildContext context;
-
-  BaseViewModel({this.context}) {
-    initViewModel();
-  }
-
-  setContext(BuildContext context) {
-    this.context = context;
-  }
-
-  void initViewModel();
-
-  void destroyViewModel();
-
-  @override
-  void dispose() {
-    destroyViewModel();
-    context = null;
-    super.dispose();
-  }
-}
-
-class ContentViewModel extends BaseViewModel {
-  ContentViewModel({context}) : super(context: context);
-
-  @override
-  void destroyViewModel() {}
-
-  @override
-  void initViewModel() {}
-}
 
 abstract class BaseWidget extends StatelessWidget {
   const BaseWidget({Key key}) : super(key: key);
@@ -41,6 +10,7 @@ abstract class BaseWidget extends StatelessWidget {
   Widget buildView(BuildContext context);
 }
 
+///////////////////////////////////////
 abstract class MultiProviderWidget extends BaseWidget {
   const MultiProviderWidget({Key key}) : super(key: key);
 
@@ -77,6 +47,48 @@ abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
     return Provider.of<T>(context, listen: false);
   }
 }
+///////////////////////////////////////
+
+abstract class CommonTitleMultiProviderWidget extends MultiProviderWidget {
+  const CommonTitleMultiProviderWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: createProviders(context),
+      child: Builder(builder: (context) {
+        return Scaffold(
+          appBar: CommonAppBar.backBlack("${title()}"),
+          body: buildView(context),
+        );
+      }),
+    );
+  }
+
+  String title();
+}
+
+abstract class CommonTitleChangeNotifierProviderWidget<T extends BaseViewModel>
+    extends ChangeNotifierProviderWidget {
+  const CommonTitleChangeNotifierProviderWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<T>.value(
+      value: createViewModel(context),
+      child: Builder(builder: (context) {
+        return Scaffold(
+          appBar: CommonAppBar.backBlack("${title()}"),
+          body: buildView(context),
+        );
+      }),
+    );
+  }
+
+  String title();
+}
+
+///////////////////////////////////////
 
 //abstract class BaseState<W extends StatefulWidget> extends State<W> {
 //  Widget buildView(BuildContext context);

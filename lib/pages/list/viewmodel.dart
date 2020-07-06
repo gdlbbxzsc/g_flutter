@@ -1,4 +1,4 @@
-import 'package:g_flutter/base/base_mvvm.dart';
+import 'package:g_flutter/base/mvvm/view_model.dart';
 import 'package:g_flutter/pages/list/refresh_viewmodel.dart';
 
 import 'model.dart';

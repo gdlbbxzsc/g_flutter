@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:g_flutter/base/base_mvvm.dart';
+import 'package:g_flutter/base/mvvm/view.dart';
 import 'package:g_flutter/pages/list/refresh_viewmodel.dart';
 import 'package:g_flutter/pages/list/viewmodel.dart';
-import 'package:g_flutter/widgets/common/app_bars.dart';
 import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
-class ListPageWidget extends MultiProviderWidget {
+class ListPageWidget extends CommonTitleMultiProviderWidget {
+  @override
+  String title() {
+    return "列表";
+  }
+
   @override
   List<SingleChildWidget> createProviders(BuildContext context) {
     return [
@@ -30,10 +34,7 @@ class ListPageWidget extends MultiProviderWidget {
 
   @override
   Widget buildView(BuildContext context) {
-    return Scaffold(
-      appBar: CommonAppBar.backBlack("列表"),
-      body: _list(),
-    );
+    return _list();
   }
 
   Widget _list() {

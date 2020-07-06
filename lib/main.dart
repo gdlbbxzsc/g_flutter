@@ -31,6 +31,9 @@ class MyApp extends StatelessWidget {
       ),
       home: LoginPageWidget(),
       routes: Routes.routes,
+//      navigatorObservers:[
+//        NavigatorObserver(),
+//      ],
     );
   }
 }

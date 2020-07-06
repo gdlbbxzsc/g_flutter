@@ -23,4 +23,21 @@ class Routes {
 //  Navigator.pushNamed(context, RouteUtils.RANKING_LIST_PAGE);
 //  Navigator.pop(context);
 
+//  static void toWeekRankingListPage(BuildContext context, int state) {
+//    Navigator.pushNamed(context, RouteUtils.WEEK_RANKING_LIST_PAGE,
+//        arguments: state);
+//  }
+//
+//
+//  static void toVipPage(BuildContext context) {
+//    Navigator.pushNamed(context, RouteUtils.VIP_PAGE);
+//  }
+
+//  static void pop(BuildContext context, {bool realColse = false}) {
+//    if (Navigator.canPop(context) || realColse) {
+//      Navigator.pop(context);
+//    } else {
+//      toMain(context, popSelf: true);
+//    }
+//  }
 }

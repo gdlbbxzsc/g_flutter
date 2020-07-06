@@ -6,7 +6,7 @@ import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class LoginPageWidget extends MultiProviderBaseWidget {
+class LoginPageWidget extends MultiProviderWidget {
   @override
   Widget buildView(BuildContext context) {
     var vm = getViewModel<LoginViewModel>(context);

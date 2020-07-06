@@ -41,8 +41,8 @@ abstract class BaseWidget extends StatelessWidget {
   Widget buildView(BuildContext context);
 }
 
-abstract class MultiProviderBaseWidget extends BaseWidget {
-  const MultiProviderBaseWidget({Key key}) : super(key: key);
+abstract class MultiProviderWidget extends BaseWidget {
+  const MultiProviderWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +59,9 @@ abstract class MultiProviderBaseWidget extends BaseWidget {
   }
 }
 
-abstract class ChangeNotifierProviderBaseWidget<T extends BaseViewModel>
+abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
     extends BaseWidget {
-  const ChangeNotifierProviderBaseWidget({Key key}) : super(key: key);
+  const ChangeNotifierProviderWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,3 +77,41 @@ abstract class ChangeNotifierProviderBaseWidget<T extends BaseViewModel>
     return Provider.of<T>(context, listen: false);
   }
 }
+
+//abstract class BaseState<W extends StatefulWidget> extends State<W> {
+//  Widget buildView(BuildContext context);
+//}
+//
+//abstract class MultiProviderState<W extends StatefulWidget>
+//    extends BaseState<W> {
+//  @override
+//  Widget build(BuildContext context) {
+//    return MultiProvider(
+//      providers: createProviders(context),
+//      child: Builder(builder: buildView),
+//    );
+//  }
+//
+//  List<SingleChildWidget> createProviders(BuildContext context);
+//
+//  T getViewModel<T extends BaseViewModel>(BuildContext context) {
+//    return Provider.of<T>(context, listen: false);
+//  }
+//}
+//
+//abstract class ChangeNotifierProviderState<W extends StatefulWidget,
+//    T extends BaseViewModel> extends BaseState<W> {
+//  @override
+//  Widget build(BuildContext context) {
+//    return ChangeNotifierProvider<T>.value(
+//      value: createViewModel(context),
+//      child: Builder(builder: buildView),
+//    );
+//  }
+//
+//  T createViewModel(BuildContext context);
+//
+//  T getViewModel(BuildContext context) {
+//    return Provider.of<T>(context, listen: false);
+//  }
+//}

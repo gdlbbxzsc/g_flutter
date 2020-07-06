@@ -9,7 +9,7 @@ import 'package:g_flutter/widgets/common/texts.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
-class ListPageWidget extends MultiProviderBaseWidget {
+class ListPageWidget extends MultiProviderWidget {
   @override
   List<SingleChildWidget> createProviders(BuildContext context) {
     return [

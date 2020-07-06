@@ -2,14 +2,15 @@ import 'dart:html' as html;
 
 import 'package:g_flutter/utils/platform_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 //因为 SharedPreferences web端没有生效，所以将数据暂存localstofage中
 //若生效可免去复杂判断。
-class SpUtil {
-  static final SpUtil _instance = SpUtil._init();
+class SpHelper {
+  static final SpHelper _instance = SpHelper._init();
 
-  SpUtil._init();
+  SpHelper._init();
 
-  factory SpUtil.getInstance() => _instance;
+  factory SpHelper.getInstance() => _instance;
 
   dynamic getSpData(String key) {
     if (PlatformUtil.isWeb) {

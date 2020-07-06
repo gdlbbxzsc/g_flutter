@@ -16,14 +16,14 @@ class EventBus {
   var _emap = new Map<Object, List<EventCallback>>();
 
   //添加订阅者
-  void on(eventName, EventCallback f) {
+  void post(eventName, EventCallback f) {
     if (eventName == null || f == null) return;
     _emap[eventName] ??= new List<EventCallback>();
     _emap[eventName].add(f);
   }
 
   //移除订阅者
-  void off(eventName, [EventCallback f]) {
+  void remove(eventName, [EventCallback f]) {
     if (eventName == null) return;
     var list = _emap[eventName];
     if (list == null) return;
@@ -36,7 +36,7 @@ class EventBus {
   }
 
   //触发事件，事件触发后该事件所有订阅者会被调用
-  void emit(eventName, [arg]) {
+  void register(eventName, [arg]) {
     var list = _emap[eventName];
     if (list == null) return;
     int len = list.length - 1;

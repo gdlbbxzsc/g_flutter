@@ -24,8 +24,8 @@ abstract class MultiProviderWidget extends BaseWidget {
 
   List<SingleChildWidget> createProviders(BuildContext context);
 
-  T getViewModel<T extends BaseViewModel>(BuildContext context) =>
-      Provider.of<T>(context, listen: false);
+  V getViewModel<V extends BaseViewModel>(BuildContext context) =>
+      Provider.of<V>(context, listen: false);
 }
 
 abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
@@ -51,17 +51,14 @@ abstract class AppBarMultiProviderWidget extends MultiProviderWidget {
   const AppBarMultiProviderWidget({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: createProviders(context),
-      child: Builder(builder: (context) {
-        return Scaffold(
-          appBar: appBar(),
-          body: buildView(context),
-        );
-      }),
+  Widget buildView(BuildContext context) {
+    return Scaffold(
+      appBar: appBar(),
+      body: buildViewBody(context),
     );
   }
+
+  Widget buildViewBody(BuildContext context);
 
   Widget appBar() => CommonAppBar.backBlack("${title()}");
 
@@ -69,63 +66,20 @@ abstract class AppBarMultiProviderWidget extends MultiProviderWidget {
 }
 
 abstract class AppBarChangeNotifierProviderWidget<T extends BaseViewModel>
-    extends ChangeNotifierProviderWidget {
+    extends ChangeNotifierProviderWidget<T> {
   const AppBarChangeNotifierProviderWidget({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<T>.value(
-      value: createViewModel(context),
-      child: Builder(builder: (context) {
-        return Scaffold(
-          appBar: appBar(),
-          body: buildView(context),
-        );
-      }),
+  Widget buildView(BuildContext context) {
+    return Scaffold(
+      appBar: appBar(),
+      body: buildViewBody(context),
     );
   }
+
+  Widget buildViewBody(BuildContext context);
 
   Widget appBar() => CommonAppBar.backBlack("${title()}");
 
   String title();
 }
-
-///////////////////////////////////////
-
-//abstract class BaseState<W extends StatefulWidget> extends State<W> {
-//  Widget buildView(BuildContext context);
-//}
-//
-//abstract class MultiProviderState<W extends StatefulWidget>
-//    extends BaseState<W> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return MultiProvider(
-//      providers: createProviders(context),
-//      child: Builder(builder: buildView),
-//    );
-//  }
-//
-//  List<SingleChildWidget> createProviders(BuildContext context);
-//
-//  T getViewModel<T extends BaseViewModel>(BuildContext context) {
-//    return Provider.of<T>(context, listen: false);
-//  }
-//}
-//
-//abstract class ChangeNotifierProviderState<W extends StatefulWidget,
-//    T extends BaseViewModel> extends BaseState<W> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return ChangeNotifierProvider<T>.value(
-//      value: createViewModel(context),
-//      child: Builder(builder: buildView),
-//    );
-//  }
-//
-//  T createViewModel(BuildContext context);
-//
-//  T getViewModel(BuildContext context) {
-//    return Provider.of<T>(context, listen: false);
-//  }
-//}

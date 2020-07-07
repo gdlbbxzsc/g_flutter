@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+class MyChangeNotifierProxyProvider<T, R extends ChangeNotifier>
+    extends ChangeNotifierProxyProvider<T, R> {
+  MyChangeNotifierProxyProvider({
+    Key key,
+    @required ProxyProviderBuilder<T, R> update,
+    bool lazy,
+    TransitionBuilder builder,
+    Widget child,
+  }) : super(
+          key: key,
+          create: (context) => null,
+          update: (context, value, previous) {
+            if (value == null) return null;
+            return update(context, value, previous);
+          },
+          lazy: lazy,
+          builder: builder,
+          child: child,
+        );
+}
+
 //对provider selector的封装
 //当监听对象为null，能够返回默认结果省去空判断
 class SelectorM<O extends Object, R extends Object> extends Selector<O, R> {

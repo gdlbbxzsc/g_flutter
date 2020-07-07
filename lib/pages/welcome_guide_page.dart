@@ -6,19 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g_flutter/widgets/common/buttons.dart';
 
-class WelcomeGuidePage extends StatefulWidget {
+class WelcomeGuidePageWidget extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
+  State<WelcomeGuidePageWidget> createState() {
 // 沉浸式状态栏1:设置状态栏颜色。
     if (Platform.isAndroid) {
       SystemChrome.setSystemUIOverlayStyle(
           SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     }
-    return new WelcomeGuideState();
+    return new _WelcomeGuidePageState();
   }
 }
 
-class WelcomeGuideState extends State<WelcomeGuidePage> {
+class _WelcomeGuidePageState extends State<WelcomeGuidePageWidget> {
 //  PageController pageController = new PageController();
   int pageViewIndex = 0;
 

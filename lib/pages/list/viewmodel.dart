@@ -6,10 +6,11 @@ import 'model.dart';
 class ListViewModel extends BaseViewModel {
   final ListModel _model = ListModel();
 
-  final RefreshViewModel refreshViewModel = RefreshViewModel(() async {
+  final RefreshViewModel<String> refreshViewModel =
+      RefreshViewModel<String>(() async {
 //    获取数据并返回
 //    _model.
-    return [];
+    return ["1", "2", "3", "4", "5"];
   });
 
   ListViewModel({context}) : super(context: context);

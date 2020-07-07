@@ -1,38 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:g_flutter/pages/list/list_page.dart';
+import 'package:g_flutter/pages/login/login_page.dart';
+import 'package:g_flutter/pages/test_page.dart';
 import 'package:g_flutter/pages/welcome_guide_page.dart';
 
-class MainTabPage extends StatefulWidget {
+class MainTabPageWidget extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return MainState();
+  State<MainTabPageWidget> createState() {
+    return MainTabPageState();
   }
 }
 
-class MainState extends State<MainTabPage> {
-  List<String> _content = ['首页', '任务', '开始赚', '邀请', '我的'];
-
-  List<String> _images = [
-//    Constant.getImagePath("player_tab_icon_1_default.png"),
-//    Constant.getImagePath("player_tab_icon_2_default.png"),
-//    Constant.getImagePath("player_tab_icon_3_default.png"),
-//    Constant.getImagePath("player_tab_icon_4_default.png"),
-//    Constant.getImagePath("player_tab_icon_5_default.png")
+class MainTabPageState extends State<MainTabPageWidget> {
+  List<Map<String, dynamic>> tabs = [
+    {
+      "title": "首页",
+      "selected": "assets/images/player_tab_icon_5_selected.png",
+      "unselected": "assets/images/player_tab_icon_5_default.png",
+      "visible": true
+    },
+    {
+      "title": "首页",
+      "selected": "assets/images/player_tab_icon_5_selected.png",
+      "unselected": "assets/images/player_tab_icon_5_default.png",
+      "visible": true
+    },
+    {
+      "title": "首页",
+      "selected": "assets/images/player_tab_icon_5_selected.png",
+      "unselected": "assets/images/player_tab_icon_5_default.png",
+      "visible": false
+    },
+    {
+      "title": "首页",
+      "selected": "assets/images/player_tab_icon_5_selected.png",
+      "unselected": "assets/images/player_tab_icon_5_default.png",
+      "visible": true
+    },
+    {
+      "title": "首页",
+      "selected": "assets/images/player_tab_icon_5_selected.png",
+      "unselected": "assets/images/player_tab_icon_5_default.png",
+      "visible": true
+    }
   ];
 
-  List<String> _images1 = [
-//    Constant.getImagePath("player_tab_icon_1_selected.png"),
-//    Constant.getImagePath("player_tab_icon_2_selected.png"),
-//    Constant.getImagePath("player_tab_icon_3_default.png"),
-//    Constant.getImagePath("player_tab_icon_4_selected.png"),
-//    Constant.getImagePath("player_tab_icon_5_selected.png")
-  ];
+//  List<String> _content = ['首页', '任务', '开始赚', '邀请', '我的'];
+//
+//  List<String> _images = [
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png"
+//  ];
+//
+//  List<String> _images1 = [
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png",
+//    "player_tab_icon_5_selected.png"
+//  ];
 
   final List<Widget> _pages = [
-    WelcomeGuidePage(),
-    WelcomeGuidePage(),
-    WelcomeGuidePage(),
-    WelcomeGuidePage(),
-    WelcomeGuidePage()
+    TestPageWidget(),
+    Text("a"),
+    Text("b"),
+    Text("c"),
+    Text("d")
   ];
 
   PageController _controller;
@@ -61,7 +97,11 @@ class MainState extends State<MainTabPage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.transparent,
-          child: _getItemImage(2, width: 80, height: 80),
+          child: Image.asset(
+            tabs[2]["unselected"],
+            width: 80,
+            height: 80,
+          ),
           onPressed: () {
             setState(() {
               this._currentIndex = 2;
@@ -105,35 +145,26 @@ class MainState extends State<MainTabPage> {
 
   List<BottomNavigationBarItem> _bottomNavigationBarItems() {
     return [
-      BottomNavigationBarItem(
-          title: Text(_content[0]),
-          icon: _getItemImage(0),
-          activeIcon: _getItemImage(0, selected: true)),
-      BottomNavigationBarItem(
-          title: Text(_content[1]),
-          icon: _getItemImage(1),
-          activeIcon: _getItemImage(1, selected: true)),
-      BottomNavigationBarItem(
-          title: Text(_content[2]),
-          icon: _getItemImage(2, width: 0),
-          activeIcon: _getItemImage(2, width: 0, selected: true)),
-      BottomNavigationBarItem(
-          title: Text(_content[3]),
-          icon: _getItemImage(3),
-          activeIcon: _getItemImage(3, selected: true)),
-      BottomNavigationBarItem(
-          title: Text(_content[4]),
-          icon: _getItemImage(4),
-          activeIcon: _getItemImage(4, selected: true))
+      _bottomNavigationBarItem(0),
+      _bottomNavigationBarItem(1),
+      _bottomNavigationBarItem(2),
+      _bottomNavigationBarItem(3),
+      _bottomNavigationBarItem(4),
     ];
   }
 
-  Image _getItemImage(int index,
-      {double width = 25, double height = 25, bool selected = false}) {
+  BottomNavigationBarItem _bottomNavigationBarItem(int index) {
+    return BottomNavigationBarItem(
+        title: Text(tabs[index]["title"]),
+        icon: _getItemImage(index),
+        activeIcon: _getItemImage(index, selected: true));
+  }
+
+  Image _getItemImage(int index, {bool selected = false}) {
     return Image.asset(
-      selected ? _images1[index] : _images[index],
-      width: width,
-      height: height,
+      selected ? tabs[index]["selected"] : tabs[index]["unselected"],
+      width: tabs[index]["visible"] ? 25 : 0,
+      height: 25,
     );
   }
 }

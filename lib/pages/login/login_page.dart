@@ -2,11 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:g_flutter/base/mvvm/view.dart';
 import 'package:g_flutter/pages/login/viewmodel.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
+import 'package:g_flutter/widgets/provider/custom_provider.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class LoginPageWidget extends MultiProviderWidget {
+  @override
+  List<SingleChildWidget> createProviders(BuildContext context) {
+    return [
+      ChangeNotifierProvider<LoginViewModel>(create: (context) {
+        return LoginViewModel(333, context: context);
+      }),
+      MyChangeNotifierProxyProvider<LoginViewModel, FatherContentModel>(
+          update: (context, value, previous) {
+        return value.fcm;
+      }),
+      MyChangeNotifierProxyProvider<FatherContentModel, SonContentModel>(
+          update: (context, value, previous) {
+        return value.son;
+      }),
+    ];
+  }
+
   @override
   Widget buildView(BuildContext context) {
     var vm = getViewModel<LoginViewModel>(context);
@@ -48,34 +66,5 @@ class LoginPageWidget extends MultiProviderWidget {
         ),
       ],
     ));
-  }
-
-  @override
-  List<SingleChildWidget> createProviders(BuildContext context) {
-    print("createProviders=================");
-
-    return [
-      ChangeNotifierProvider<LoginViewModel>(create: (BuildContext context) {
-        return LoginViewModel(333, context: context);
-      }),
-      ChangeNotifierProxyProvider<LoginViewModel, FatherContentModel>(
-        create: (_) {
-          return null;
-        },
-        update: (context, value, previous) {
-          if (value == null) return null;
-          return value.fcm;
-        },
-      ),
-      ChangeNotifierProxyProvider<FatherContentModel, SonContentModel>(
-        create: (_) {
-          return null;
-        },
-        update: (context, value, previous) {
-          if (value == null) return null;
-          return value.son;
-        },
-      ),
-    ];
   }
 }

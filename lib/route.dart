@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:g_flutter/pages/list/list_page.dart';
+import 'package:g_flutter/pages/login/login_page.dart';
 import 'package:g_flutter/pages/main_tab_page.dart';
 import 'package:g_flutter/pages/welcome_guide_page.dart';
 
 class Routes {
-  static const String WELCOME_GUIDE_PAGE = "WelcomeGuidePage";
-  static const String MAIN_TAB_PAGE = "MainTabPage";
+  static const String WELCOME_GUIDE_PAGEWIDGET = "WelcomeGuidePageWidget";
+  static const String LOGIN_PAGEWIDGET = "LoginPageWidget";
+  static const String MAIN_TAB_PAGEWIDGET = "MainTabPageWidget";
+  static const String LIST_PAGEWIDGET = "ListPageWidget";
 
   static final Map<String, WidgetBuilder> routes = {
-    WELCOME_GUIDE_PAGE: (context) => WelcomeGuidePage(),
-    MAIN_TAB_PAGE: (context) => MainTabPage(),
+    WELCOME_GUIDE_PAGEWIDGET: (context) => WelcomeGuidePageWidget(),
+    LOGIN_PAGEWIDGET: (context) => LoginPageWidget(),
+    MAIN_TAB_PAGEWIDGET: (context) => MainTabPageWidget(),
+    LIST_PAGEWIDGET: (context) => ListPageWidget(),
 
 //    REALEASE_ORDINARY_MISSION: (context) {
 //      int taskSubType = ModalRoute.of(context).settings.arguments;
@@ -40,4 +46,16 @@ class Routes {
 //      toMain(context, popSelf: true);
 //    }
 //  }
+
+  static void goWelcomeGuidePageWidget(BuildContext context) {
+    Navigator.pushNamed(context, WELCOME_GUIDE_PAGEWIDGET);
+  }
+
+  static void goLoginPageWidget(BuildContext context) {
+    Navigator.pushNamed(context, LOGIN_PAGEWIDGET);
+  }
+
+  static void goListPageWidget(BuildContext context) {
+    Navigator.pushNamed(context, LIST_PAGEWIDGET);
+  }
 }

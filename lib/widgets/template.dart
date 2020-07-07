@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:g_flutter/widgets/selecotr/custom_provider.dart';
+import 'package:g_flutter/widgets/provider/custom_provider.dart';
 
 //这里的方法 需要父子到对应的界面去重新调试一下后使用
 

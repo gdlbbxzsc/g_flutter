@@ -24,9 +24,8 @@ abstract class MultiProviderWidget extends BaseWidget {
 
   List<SingleChildWidget> createProviders(BuildContext context);
 
-  T getViewModel<T extends BaseViewModel>(BuildContext context) {
-    return Provider.of<T>(context, listen: false);
-  }
+  T getViewModel<T extends BaseViewModel>(BuildContext context) =>
+      Provider.of<T>(context, listen: false);
 }
 
 abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
@@ -43,9 +42,8 @@ abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
 
   T createViewModel(BuildContext context);
 
-  T getViewModel(BuildContext context) {
-    return Provider.of<T>(context, listen: false);
-  }
+  T getViewModel(BuildContext context) =>
+      Provider.of<T>(context, listen: false);
 }
 ///////////////////////////////////////
 
@@ -65,9 +63,7 @@ abstract class AppBarMultiProviderWidget extends MultiProviderWidget {
     );
   }
 
-  Widget appBar() {
-    return CommonAppBar.backBlack("${title()}");
-  }
+  Widget appBar() => CommonAppBar.backBlack("${title()}");
 
   String title();
 }
@@ -89,9 +85,7 @@ abstract class AppBarChangeNotifierProviderWidget<T extends BaseViewModel>
     );
   }
 
-  Widget appBar() {
-    return CommonAppBar.backBlack("${title()}");
-  }
+  Widget appBar() => CommonAppBar.backBlack("${title()}");
 
   String title();
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--  在flutter 端调用    js.context.callMethod("open", ["pay.html"]); 打开此页面  -->
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="js/jquery-3.5.0.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+<input type="button" onclick="recharge()" value="充值"/>
+
+
+<script type="text/javascript">
+        function recharge() {
+<!--           var newWindow = window.open('', '_blank');-->
+<!--            if (newWindow == null || typeof(newWindow)=='undefined') alert("关闭您的弹出窗口拦截器！");-->
+
+let token=localStorage.getItem("TOKEN");
+if(token==null|| typeof(token)=='undefined'||token==''){
+alert( "充值失败");
+return;
+}
+
+
+
+            $.ajax({
+                headers: {
+                    "Content-Type": "application/json-patch+json",
+                    "Accept": "application/json",
+                    Authorization: "Bearer "+token
+                },
+                url: "http://47.94.151.155:8081/api/Money/RechargeForWeb",
+                type: "post",
+                data: "{ \"rechargeNum\": 1 }",
+                dataType: "json",
+                success: function (obj) {
+<!--                  newWindow.location.href = 'http://www.baidu.com/pay/alipay.html?id='+result.id;-->
+                  document.write(obj.data.responseBody);
+                }
+            });
+        }
+
+</script>
+</body>
+
+</html>

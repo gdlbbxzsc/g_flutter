@@ -49,8 +49,8 @@ abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
 }
 ///////////////////////////////////////
 
-abstract class CommonTitleMultiProviderWidget extends MultiProviderWidget {
-  const CommonTitleMultiProviderWidget({Key key}) : super(key: key);
+abstract class AppBarMultiProviderWidget extends MultiProviderWidget {
+  const AppBarMultiProviderWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +58,23 @@ abstract class CommonTitleMultiProviderWidget extends MultiProviderWidget {
       providers: createProviders(context),
       child: Builder(builder: (context) {
         return Scaffold(
-          appBar: CommonAppBar.backBlack("${title()}"),
+          appBar: appBar(),
           body: buildView(context),
         );
       }),
     );
   }
 
+  Widget appBar() {
+    return CommonAppBar.backBlack("${title()}");
+  }
+
   String title();
 }
 
-abstract class CommonTitleChangeNotifierProviderWidget<T extends BaseViewModel>
+abstract class AppBarChangeNotifierProviderWidget<T extends BaseViewModel>
     extends ChangeNotifierProviderWidget {
-  const CommonTitleChangeNotifierProviderWidget({Key key}) : super(key: key);
+  const AppBarChangeNotifierProviderWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,11 +82,15 @@ abstract class CommonTitleChangeNotifierProviderWidget<T extends BaseViewModel>
       value: createViewModel(context),
       child: Builder(builder: (context) {
         return Scaffold(
-          appBar: CommonAppBar.backBlack("${title()}"),
+          appBar: appBar(),
           body: buildView(context),
         );
       }),
     );
+  }
+
+  Widget appBar() {
+    return CommonAppBar.backBlack("${title()}");
   }
 
   String title();

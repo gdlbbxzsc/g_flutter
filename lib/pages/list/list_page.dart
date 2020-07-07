@@ -8,7 +8,7 @@ import 'package:g_flutter/widgets/common/texts.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
-class ListPageWidget extends CommonTitleMultiProviderWidget {
+class ListPageWidget extends AppBarMultiProviderWidget {
   @override
   String title() {
     return "列表";

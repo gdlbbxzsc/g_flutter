@@ -1,10 +1,10 @@
-import 'package:g_flutter/platform/mobile/sp/sp_utils.dart';
-import 'package:g_flutter/platform/platform_util.dart';
-import 'package:g_flutter/platform/sp/i_sp_options.dart';
-import 'package:g_flutter/platform/web/sp/sp_utils.dart';
-
 //因为 SharedPreferences web端没有生效，所以将数据暂存localstofage中
 //若生效可免去复杂判断。
+import 'package:g_flutter/platform_utils/base/sp/i_sp_options.dart';
+import 'package:g_flutter/platform_utils/mobile/sp/sp_utils.dart';
+import 'package:g_flutter/platform_utils/platform_util.dart';
+import 'package:g_flutter/platform_utils/web/sp/sp_utils.dart';
+
 class SpHelper extends ISpUtil {
   factory SpHelper.getInstance() => _instance;
   static final SpHelper _instance = SpHelper._init();

@@ -1,4 +1,4 @@
-import 'package:g_flutter/platform/sp/i_sp_options.dart';
+import 'package:g_flutter/platform_utils/base/sp/i_sp_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 //因为 SharedPreferences web端没有生效，所以将数据暂存localstofage中

@@ -1,8 +1,6 @@
 import 'package:g_flutter/platform_utils/base/sp/i_sp_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//因为 SharedPreferences web端没有生效，所以将数据暂存localstofage中
-//若生效可免去复杂判断。
 class SpUtilMobileImpl extends ISpUtil {
   dynamic get(String key) {
     SharedPreferences.getInstance().then((sp) {

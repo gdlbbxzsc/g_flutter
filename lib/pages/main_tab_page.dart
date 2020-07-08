@@ -35,12 +35,12 @@ class _MainTabPageState extends State<MainTabPageWidget> {
 
   PageController _controller;
   int _currentIndex = 0; //默认选中和当前选中
-  int centerIndex; //中间按钮所在位置
+  int _centerIndex; //中间按钮所在位置
 
   initState() {
     super.initState();
-
-    centerIndex = (tabs.length / 2 + 1) as int;
+    //tabs.length 要奇数
+    _centerIndex = tabs.length ~/ 2;
 
     _controller = PageController(initialPage: _currentIndex);
   }
@@ -64,14 +64,15 @@ class _MainTabPageState extends State<MainTabPageWidget> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.transparent,
           child: Image.asset(
-            tabs[centerIndex]["unselected"],
+            tabs[_centerIndex]["unselected"],
             width: 80,
             height: 80,
           ),
           onPressed: () {
-            setState(() {
-              this._currentIndex = centerIndex;
-            });
+            _controller.jumpToPage(_centerIndex);
+//            setState(() {
+//              this._currentIndex = centerIndex;
+//            });
           },
         ));
   }
@@ -85,11 +86,11 @@ class _MainTabPageState extends State<MainTabPageWidget> {
         return tabs[index]["page"];
       },
       onPageChanged: (index) {
-        if (index != _currentIndex) {
-          setState(() {
-            _currentIndex = index;
-          });
-        }
+//        if (index != _currentIndex) {
+//          setState(() {
+//            _currentIndex = index;
+//          });
+//        }
       },
     );
   }

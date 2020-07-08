@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:g_flutter/application.dart';
 import 'package:g_flutter/pages/main_tab_page.dart';
 import 'package:g_flutter/route.dart';
@@ -30,6 +32,14 @@ class MyApp extends StatelessWidget {
       ),
       home: MainTabPageWidget(),
       routes: Routes.routes,
+      localizationsDelegates: [
+        GlobalEasyRefreshLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate
+      ],
+      supportedLocales: [
+        Locale("zh", "CN"),
+        Locale("en", ""),
+      ],
     );
   }
 }

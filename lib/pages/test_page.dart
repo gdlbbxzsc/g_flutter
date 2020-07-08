@@ -7,18 +7,20 @@ class TestPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CommonButton.circularWhite12(
-            text: "a",
+        CommonButton.forCommonDialog(
+            text: "goListPageWidget",
             onTap: () {
               Routes.goListPageWidget(context);
             }),
-        CommonButton.circularWhite12(
-            text: "a",
+        SizedBox(height: 10),
+        CommonButton.forCommonDialog(
+            text: "goLoginPageWidget",
             onTap: () {
               Routes.goLoginPageWidget(context);
             }),
-        CommonButton.circularWhite12(
-            text: "a",
+        SizedBox(height: 10),
+        CommonButton.forCommonDialog(
+            text: "goWelcomeGuidePageWidget",
             onTap: () {
               Routes.goWelcomeGuidePageWidget(context);
             }),

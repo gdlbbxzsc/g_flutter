@@ -1,74 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:g_flutter/pages/list/list_page.dart';
-import 'package:g_flutter/pages/login/login_page.dart';
 import 'package:g_flutter/pages/test_page.dart';
-import 'package:g_flutter/pages/welcome_guide_page.dart';
 
 class MainTabPageWidget extends StatefulWidget {
   @override
   State<MainTabPageWidget> createState() {
-    return MainTabPageState();
+    return _MainTabPageState();
   }
 }
 
-class MainTabPageState extends State<MainTabPageWidget> {
+class _MainTabPageState extends State<MainTabPageWidget> {
   List<Map<String, dynamic>> tabs = [
     {
       "title": "首页",
       "selected": "assets/images/player_tab_icon_5_selected.png",
       "unselected": "assets/images/player_tab_icon_5_default.png",
-      "visible": true
+      "visible": true,
+      "page": TestPageWidget()
     },
     {
-      "title": "首页",
+      "title": "中间",
       "selected": "assets/images/player_tab_icon_5_selected.png",
       "unselected": "assets/images/player_tab_icon_5_default.png",
-      "visible": true
+      "visible": false,
+      "page": Text("中间")
     },
     {
-      "title": "首页",
+      "title": "我的",
       "selected": "assets/images/player_tab_icon_5_selected.png",
       "unselected": "assets/images/player_tab_icon_5_default.png",
-      "visible": false
-    },
-    {
-      "title": "首页",
-      "selected": "assets/images/player_tab_icon_5_selected.png",
-      "unselected": "assets/images/player_tab_icon_5_default.png",
-      "visible": true
-    },
-    {
-      "title": "首页",
-      "selected": "assets/images/player_tab_icon_5_selected.png",
-      "unselected": "assets/images/player_tab_icon_5_default.png",
-      "visible": true
+      "visible": true,
+      "page": Text("我的")
     }
-  ];
-
-//  List<String> _content = ['首页', '任务', '开始赚', '邀请', '我的'];
-//
-//  List<String> _images = [
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png"
-//  ];
-//
-//  List<String> _images1 = [
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png",
-//    "player_tab_icon_5_selected.png"
-//  ];
-
-  final List<Widget> _pages = [
-    TestPageWidget(),
-    Text("a"),
-    Text("b"),
-    Text("c"),
-    Text("d")
   ];
 
   PageController _controller;
@@ -113,10 +75,10 @@ class MainTabPageState extends State<MainTabPageWidget> {
   Widget _buildBodyWidget() {
     return PageView.builder(
       controller: _controller,
-      itemCount: _pages.length,
+      itemCount: tabs.length,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return _pages[index];
+        return tabs[index]["page"];
       },
       onPageChanged: (index) {
         if (index != _currentIndex) {

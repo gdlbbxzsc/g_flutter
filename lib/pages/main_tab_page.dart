@@ -34,11 +34,15 @@ class _MainTabPageState extends State<MainTabPageWidget> {
   ];
 
   PageController _controller;
-  int _currentIndex = 0;
+  int _currentIndex = 0; //默认选中和当前选中
+  int centerIndex; //中间按钮所在位置
 
   initState() {
     super.initState();
-    _controller = PageController(initialPage: 0);
+
+    centerIndex = (tabs.length / 2 + 1) as int;
+
+    _controller = PageController(initialPage: _currentIndex);
   }
 
   @override
@@ -60,13 +64,13 @@ class _MainTabPageState extends State<MainTabPageWidget> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.transparent,
           child: Image.asset(
-            tabs[2]["unselected"],
+            tabs[centerIndex]["unselected"],
             width: 80,
             height: 80,
           ),
           onPressed: () {
             setState(() {
-              this._currentIndex = 2;
+              this._currentIndex = centerIndex;
             });
           },
         ));
@@ -106,27 +110,28 @@ class _MainTabPageState extends State<MainTabPageWidget> {
   }
 
   List<BottomNavigationBarItem> _bottomNavigationBarItems() {
-    return [
-      _bottomNavigationBarItem(0),
-      _bottomNavigationBarItem(1),
-      _bottomNavigationBarItem(2),
-      _bottomNavigationBarItem(3),
-      _bottomNavigationBarItem(4),
-    ];
+    List<BottomNavigationBarItem> list = new List<BottomNavigationBarItem>();
+    for (int i = 0, c = tabs.length; i < c; i++) {
+      list.add(_bottomNavigationBarItem(i));
+    }
+    return list;
   }
 
   BottomNavigationBarItem _bottomNavigationBarItem(int index) {
     return BottomNavigationBarItem(
-        title: Text(tabs[index]["title"]),
-        icon: _getItemImage(index),
-        activeIcon: _getItemImage(index, selected: true));
+      title: Text(tabs[index]["title"]),
+      icon: _getItemImage(index, false),
+      activeIcon: _getItemImage(index, true),
+    );
   }
 
-  Image _getItemImage(int index, {bool selected = false}) {
+  final double wh = 25;
+
+  Image _getItemImage(int index, bool selected) {
     return Image.asset(
       selected ? tabs[index]["selected"] : tabs[index]["unselected"],
-      width: tabs[index]["visible"] ? 25 : 0,
-      height: 25,
+      width: tabs[index]["visible"] ? wh : 0,
+      height: wh,
     );
   }
 }

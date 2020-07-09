@@ -10,10 +10,10 @@ class CommonDialog<T> extends Dialog {
   String message;
 
   String negativeText;
-  Function(BuildContext dialogContext) onNegativeClick;
+  Function(BuildContext dialogContext, CommonDialog dialog) onNegativeClick;
 
   String positiveText;
-  Function(BuildContext dialogContext) onpositiveClick;
+  Function(BuildContext dialogContext, CommonDialog dialog) onpositiveClick;
 
   CommonDialog({
     Key key,
@@ -61,6 +61,10 @@ class CommonDialog<T> extends Dialog {
       routeSettings: routeSettings,
       builder: (BuildContext context) => this,
     );
+  }
+
+  void pop(BuildContext context, [T result]) {
+    Navigator.pop(context, result);
   }
 
   @override
@@ -135,10 +139,10 @@ class CommonDialog<T> extends Dialog {
         text: negativeText,
         onTap: () {
           if (onNegativeClick != null) {
-            onNegativeClick(context);
+            onNegativeClick(context, this);
             return;
           }
-          Navigator.pop(context);
+          pop(context);
         },
       ),
     );
@@ -151,10 +155,10 @@ class CommonDialog<T> extends Dialog {
         text: positiveText,
         onTap: () {
           if (onpositiveClick != null) {
-            onpositiveClick(context);
+            onpositiveClick(context, this);
             return;
           }
-          Navigator.pop(context);
+          pop(context);
         },
       ),
     );

@@ -29,7 +29,17 @@ class TestPageWidget extends StatelessWidget {
         CommonButton.forCommonDialog(
             text: "dialog",
             onTap: () {
-              CommonDialog.alert(message: "null").show(context: context);
+              CommonDialog<int> //
+                      .alert(
+                message: "null",
+                onNegativeClick: (c, dialog) {
+                  dialog.pop(c, 123);
+                },
+              ) //
+                  .show(context: context) //
+                  .then((value) {
+                print("$value===============");
+              });
             }),
       ],
     );

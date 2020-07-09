@@ -37,3 +37,37 @@ Widget _createSwiper() {
     ),
   );
 }
+
+////同意 xxx协议 点击打开去哪里
+//Widget _agree() {
+//  return Row(
+//    mainAxisAlignment: MainAxisAlignment.center,
+//    children: [
+//      SelectorB<NewRechargeViewModel>(
+//          selector: (buildContext, vm) => vm.check,
+//          builder: (context, data, child) {
+//            return Checkbox(
+//              value: data,
+//              activeColor: Colors.red,
+//              onChanged: (bool val) {
+//                viewModel<NewRechargeViewModel>(context).changeCheck();
+//              },
+//            );
+//          }),
+//      CommonText.black15("已阅读并同意"),
+//      InkWell(
+//        onTap: () {
+//          HtmlHelper.getInstance()
+//              .openHtmlPage(Constant.RECHARGE_PROTOCOL_URL);
+//        },
+//        child: CommonText.red15("《淘差事VIP购买协议》"),
+//      ),
+//    ],
+//  );
+//}
+////viewmodel 中用到的字段方法
+//bool check = false;
+//void changeCheck() {
+//  check = !check;
+//  notifyListeners();
+//}

@@ -5,7 +5,7 @@ import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
 
 // ignore: must_be_immutable
-class CommonDialog extends Dialog {
+class CommonDialog<T> extends Dialog {
   String title;
   String message;
 
@@ -42,6 +42,26 @@ class CommonDialog extends Dialog {
     this.positiveText = "确定",
     this.onpositiveClick,
   }) : super(key: key);
+
+  Future<T> show({
+    @required BuildContext context,
+    WidgetBuilder builder,
+    bool barrierDismissible = true,
+    Color barrierColor,
+    bool useSafeArea = true,
+    bool useRootNavigator = true,
+    RouteSettings routeSettings,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+      builder: (BuildContext context) => this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

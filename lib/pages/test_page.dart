@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g_flutter/route.dart';
 import 'package:g_flutter/widgets/common/buttons.dart';
+import 'package:g_flutter/widgets/common/dialog.dart';
 
 class TestPageWidget extends StatelessWidget {
   @override
@@ -23,6 +24,12 @@ class TestPageWidget extends StatelessWidget {
             text: "goWelcomeGuidePageWidget",
             onTap: () {
               Routes.goWelcomeGuidePageWidget(context);
+            }),
+        SizedBox(height: 10),
+        CommonButton.forCommonDialog(
+            text: "dialog",
+            onTap: () {
+              CommonDialog.alert(message: "null").show(context: context);
             }),
       ],
     );

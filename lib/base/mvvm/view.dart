@@ -18,7 +18,7 @@ abstract class MultiProviderWidget extends BaseWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: createProviders(context),
-      child: Builder(builder: buildView),
+      child: SafeArea(child: Builder(builder: buildView)),
     );
   }
 
@@ -36,7 +36,7 @@ abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(
       value: createViewModel(context),
-      child: Builder(builder: buildView),
+      child: SafeArea(child: Builder(builder: buildView)),
     );
   }
 

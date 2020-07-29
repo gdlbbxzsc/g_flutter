@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1">
+    <style>
+        #link_address{
+            width: calc(100% - 30px);
+            padding: 10px;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+        #copyBtn{
+            border: 0px;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+            height: 40px;
+            width: calc(100% - 30px);
+            border-radius: 20px;
+            background: #F04C69;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery-copy.min.js"></script>
+</head>
+<body>
+<div id="link_address"></div>
+<button id="copyBtn">复制</button>
+
+<script>
+    window.onload=function (){
+        let link_address = localStorage.getItem("link_address");
+        $('#link_address').text(link_address);
+
+       $.copy({
+            text:"复制成功", //分享提示文案
+            copyUrl:link_address, //自定义复制链接地址
+            tipTime:2000, //分享提示消失时间
+            copyId:"#copyBtn"//复制按钮id
+        });
+    }
+</script>
+</body>
+</html>

@@ -10,6 +10,15 @@ class WebViewPage extends StatefulWidget {
 
   const WebViewPage({Key key, this.title, this.url}) : super(key: key);
 
+  const WebViewPage.copy({Key key})
+      : this(key: key, title: "点击复制", url: "pages/clipboard.html");
+
+  const WebViewPage.alipay({Key key})
+      : this(key: key, title: "支付宝支付", url: "pages/alipay.html");
+
+  const WebViewPage.wechatpay({Key key})
+      : this(key: key, title: "微信支付", url: "pages/wechatpay.html");
+
   @override
   _WebViewState createState() => _WebViewState();
 }
@@ -21,7 +30,7 @@ class _WebViewState extends State<WebViewPage> {
     // ignore:undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       'webInWeb',
-          (int viewId) => html.IFrameElement()
+      (int viewId) => html.IFrameElement()
         ..style.border = 'none'
         ..src = widget.url,
     );

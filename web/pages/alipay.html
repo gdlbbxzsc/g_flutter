@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--  在flutter 端调用    js.context.callMethod("open", ["alipay.html"]); 打开此页面  -->
+    <meta charset="utf-8"/>
+    <title>支付</title>
+    <script type="text/javascript" src="js/jquery-3.5.0.min.js"></script>
+    <style>
+        html,body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 100%;
+            height: 30%;
+            margin: 0 auto; /*水平居中*/
+            position: relative; /*脱离文档流*/
+             top: 10%; /*偏移*/
+        }
+    </style>
+</head>
+<body>
+<div class="content" style="padding:20px" align="center">
+    <img src="icons/ico_ailpay.png" style="width:200px;height:200px"><br/><br/>
+    <label style="font-size:40px" id="fabudou">充值发布豆:0</label> <br/><br/>
+    <input style="width:100%;background-color:#1E88E5;border-radius:15px;border:0px;padding:20px;color:white;font-size:40px"
+           type="button" onclick="recharge()" value="支付宝支付"/>
+    <a id="test" style="display:none;"></a>
+</div>
+
+
+<script type="text/javascript">
+  let rechargeNum=localStorage.getItem("pay_money");
+   var fabudou = document.getElementById("fabudou");
+   fabudou.innerText="充值:"+rechargeNum+"发布豆";
+    function recharge() {
+        let token=localStorage.getItem("TOKEN");
+        if(token==null|| typeof(token)=='undefined'||token==''){
+            alert( "充值失败,请重新登录");
+            return;
+        }
+        let rechargeNum=localStorage.getItem("pay_money");
+        localStorage.removeItem('pay_money');
+        if(rechargeNum==null|| typeof(rechargeNum)=='undefined'||token==''){
+            alert( "充值失败,请重新充值");
+            return;
+        }
+
+        let rechargeType = "alipay";
+        $.ajax({
+            headers: {
+                "Content-Type": "application/json-patch+json",
+                "Accept": "application/json",
+                "Authorization": "Bearer "+token
+            },
+            <!--            url: "http://47.94.151.155:8081/api/Money/RechargeForWeb",-->
+<!--            url: "http://pbpb88.com/api/Money/RechargeForWeb",-->
+            url: "http://39.97.20.220/api/Money/RechargeForWeb",
+            type: "post",
+            data: "{ \"rechargeType\":\"" + rechargeType + "\", \"rechargeNum\": \""+rechargeNum+"\" , \"isWeChatBrowser\": \""+false+"\"}",
+            dataType: "json",
+            success: function (obj) {
+                document.write(obj.data.responseBody);
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

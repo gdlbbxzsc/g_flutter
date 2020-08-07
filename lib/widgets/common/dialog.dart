@@ -10,10 +10,10 @@ class CommonDialog<T> extends Dialog {
   String message;
 
   String negativeText;
-  Function(BuildContext dialogContext, CommonDialog dialog) onNegativeClick;
+  T Function(BuildContext dialogContext, CommonDialog dialog) onNegativeClick;
 
   String positiveText;
-  Function(BuildContext dialogContext, CommonDialog dialog) onpositiveClick;
+  T Function(BuildContext dialogContext, CommonDialog dialog) onpositiveClick;
 
   CommonDialog({
     Key key,
@@ -138,11 +138,11 @@ class CommonDialog<T> extends Dialog {
       child: CommonButton.forCommonDialog(
         text: negativeText,
         onTap: () {
+          T res;
           if (onNegativeClick != null) {
-            onNegativeClick(context, this);
-            return;
+            res = onNegativeClick(context, this);
           }
-          pop(context);
+          pop(context, res);
         },
       ),
     );
@@ -154,11 +154,11 @@ class CommonDialog<T> extends Dialog {
       child: CommonButton.forCommonDialog(
         text: positiveText,
         onTap: () {
+          T res;
           if (onpositiveClick != null) {
-            onpositiveClick(context, this);
-            return;
+            res = onpositiveClick(context, this);
           }
-          pop(context);
+          pop(context, res);
         },
       ),
     );

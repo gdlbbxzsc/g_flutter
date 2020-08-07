@@ -6,7 +6,7 @@ import 'package:g_flutter/pages/list/refresh_viewmodel.dart';
 import 'package:g_flutter/pages/list/viewmodel.dart';
 import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
-import 'package:g_flutter/widgets/provider/custom_provider.dart';
+import 'package:g_flutter/widgets/provider/common_provider.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 

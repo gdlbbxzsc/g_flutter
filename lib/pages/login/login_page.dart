@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g_flutter/base/mvvm/view.dart';
 import 'package:g_flutter/pages/login/viewmodel.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
-import 'package:g_flutter/widgets/provider/custom_provider.dart';
+import 'package:g_flutter/widgets/provider/common_provider.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 

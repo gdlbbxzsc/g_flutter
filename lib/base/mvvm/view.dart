@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g_flutter/base/mvvm/view_model.dart';
-import 'package:g_flutter/widgets/common/app_bars/common_app_bars.dart';
+import 'package:g_flutter/widgets/common/app_bars.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

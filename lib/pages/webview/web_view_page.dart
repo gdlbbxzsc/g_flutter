@@ -2,7 +2,7 @@ import 'dart:html' as html;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:g_flutter/widgets/common/app_bars.dart';
+import 'package:g_flutter/widgets/common/app_bars/common_app_bars.dart';
 
 class WebViewPage extends StatefulWidget {
   final String title;
@@ -39,7 +39,7 @@ class _WebViewState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar.backBlack(widget.title),
+      appBar: MyAppBar.backBlack(widget.title),
       body: HtmlElementView(viewType: 'webInWeb'),
     );
   }

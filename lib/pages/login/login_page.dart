@@ -52,7 +52,7 @@ class LoginPageWidget extends MultiProviderWidget {
             return T.faStr;
           },
           builder: (BuildContext context, value, Widget child) {
-            return CommonText.black13(value);
+            return MyText.black13(value);
           },
         ),
         Selector<SonContentModel, String>(
@@ -61,7 +61,7 @@ class LoginPageWidget extends MultiProviderWidget {
             return T.sonStr;
           },
           builder: (BuildContext context, value, Widget child) {
-            return CommonText.black13(value);
+            return MyText.black13(value);
           },
         ),
       ],

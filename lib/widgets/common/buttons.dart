@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CommonButton extends StatelessWidget {
-  const CommonButton(
+class MyButton extends StatelessWidget {
+  const MyButton(
       {Key key,
       this.text = "确定",
       this.fontSize,
@@ -16,7 +16,7 @@ class CommonButton extends StatelessWidget {
       this.onTap})
       : super(key: key);
 
-  const CommonButton.circularGrey12(
+  const MyButton.circularGrey12(
       {Key key,
       this.text = "确定",
       this.fontSize = 12,
@@ -31,7 +31,7 @@ class CommonButton extends StatelessWidget {
       this.onTap})
       : super(key: key);
 
-  const CommonButton.circularWhite12(
+  const MyButton.circularWhite12(
       {Key key,
       this.text = "确定",
       this.fontSize = 12,
@@ -46,7 +46,7 @@ class CommonButton extends StatelessWidget {
       this.onTap})
       : super(key: key);
 
-  const CommonButton.forCommonDialog(
+  const MyButton.forMyDialog(
       {Key key,
       this.text = "取消",
       this.fontSize = 15,
@@ -101,34 +101,6 @@ class CommonButton extends StatelessWidget {
               Radius.circular(borderRadius == null ? 0 : borderRadius)),
         ),
       ),
-    );
-  }
-}
-
-class BackButtonIos extends StatelessWidget {
-  final Color color;
-  final Function() onPressed;
-
-  const BackButtonIos(
-      {Key key, this.onPressed, this.color = const Color(0xff000000)})
-      : super(key: key);
-
-  const BackButtonIos.black(
-      {Key key, this.onPressed, this.color = const Color(0xff000000)})
-      : super(key: key);
-
-  const BackButtonIos.white(
-      {Key key, this.onPressed, this.color = const Color(0xffffffff)})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(Icons.arrow_back_ios, color: color),
-      onPressed: () {
-        if (onPressed != null) onPressed();
-        Navigator.pop(context);
-      },
     );
   }
 }

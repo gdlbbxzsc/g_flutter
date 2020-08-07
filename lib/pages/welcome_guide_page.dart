@@ -34,14 +34,14 @@ class _WelcomeGuidePageState extends State<WelcomeGuidePageWidget> {
         new Positioned(
           child: Offstage(
               offstage: pageViewIndex == images.length - 1,
-              child: CommonButton.circularWhite12(text: "跳过")),
+              child: MyButton.circularWhite12(text: "跳过")),
           top: 36,
           right: 15,
         ),
         new Positioned(
           child: Offstage(
               offstage: pageViewIndex != images.length - 1,
-              child: CommonButton.circularWhite12(text: "点击进入")),
+              child: MyButton.circularWhite12(text: "点击进入")),
           bottom: 20,
         )
       ],

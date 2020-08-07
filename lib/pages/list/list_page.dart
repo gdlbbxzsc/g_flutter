@@ -79,7 +79,7 @@ class ListPageWidget extends AppBarMultiProviderWidget {
       padding: const EdgeInsets.all(12),
       child: Row(
         children: [
-          CommonText.black16("$data"),
+          MyText.black16("$data"),
         ],
       ),
     );

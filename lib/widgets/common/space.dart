@@ -65,8 +65,3 @@ class Space extends SizedBox {
 
   const Space.height30() : this(0.0, 30.0);
 }
-
-class SpaceWeight extends Expanded {
-  const SpaceWeight({int flex = 1})
-      : super(flex: flex, child: const SizedBox());
-}

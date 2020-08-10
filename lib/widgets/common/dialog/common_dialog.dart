@@ -15,58 +15,31 @@ class MyDialog<T> extends BaseDialog<T> {
   String positiveText;
   T Function(BuildContext dialogContext, MyDialog dialog) onPositiveClick;
 
-  MyDialog({
+  MyDialog.alertYes({
+    Key key,
+    this.title = "提示",
+    @required this.message,
+    this.negativeText = "确定",
+    this.onNegativeClick,
+  }) : super(key: key);
+
+  MyDialog.alertEsc({
     Key key,
     this.title = "提示",
     @required this.message,
     this.negativeText = "取消",
     this.onNegativeClick,
-    this.positiveText,
-    this.onPositiveClick,
   }) : super(key: key);
-
-  MyDialog.alertYes({
-    Key key,
-    title,
-    @required message,
-    negativeText = "确定",
-    onNegativeClick,
-  }) : this(
-            key: key,
-            title: title,
-            message: message,
-            negativeText: negativeText,
-            onNegativeClick: onNegativeClick);
-
-  MyDialog.alertEsc({
-    Key key,
-    title,
-    @required message,
-    negativeText = "取消",
-    onNegativeClick,
-  }) : this(
-            key: key,
-            title: title,
-            message: message,
-            negativeText: negativeText,
-            onNegativeClick: onNegativeClick);
 
   MyDialog.confirm({
     Key key,
-    title,
-    @required message,
-    negativeText,
-    onNegativeClick,
-    positiveText = "确定",
-    onPositiveClick,
-  }) : this(
-            key: key,
-            title: title,
-            message: message,
-            negativeText: negativeText,
-            onNegativeClick: onNegativeClick,
-            positiveText: positiveText,
-            onPositiveClick: onPositiveClick);
+    this.title = "提示",
+    @required this.message,
+    this.negativeText = "取消",
+    this.onNegativeClick,
+    this.positiveText = "确定",
+    this.onPositiveClick,
+  }) : super(key: key);
 
   @override
   List<Widget> buildView(BuildContext context) {

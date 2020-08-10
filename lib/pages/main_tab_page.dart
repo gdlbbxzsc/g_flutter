@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g_flutter/pages/test_page.dart';
+import 'package:g_flutter/widgets/common/app_bars.dart';
 
 class MainTabPageWidget extends StatefulWidget {
   @override
@@ -54,10 +55,7 @@ class _MainTabPageState extends State<MainTabPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("标题"),
-        ),
+        appBar: MyAppBar.noneBlack("测试 标题"),
         body: _buildBodyWidget(),
         bottomNavigationBar: _buildBottomNavigationBarWidget(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -32,6 +32,13 @@ class MyAppBar extends AppBar {
             ),
             bottom: bottom);
 
+  MyAppBar.noneBlack(String text,
+      {titleColor = Colors.black, backgroundColor = Colors.white, bottom})
+      : this(text,
+            titleColor: titleColor,
+            backgroundColor: backgroundColor,
+            bottom: bottom);
+
   MyAppBar.backWhite(String text,
       {titleColor = Colors.white,
       backgroundColor = Colors.redAccent,
@@ -44,6 +51,13 @@ class MyAppBar extends AppBar {
               color: titleColor,
               onPressed: onBackPressed,
             ),
+            bottom: bottom);
+
+  MyAppBar.noneWhite(String text,
+      {titleColor = Colors.white, backgroundColor = Colors.redAccent, bottom})
+      : this(text,
+            titleColor: titleColor,
+            backgroundColor: backgroundColor,
             bottom: bottom);
 }
 

@@ -31,14 +31,14 @@ class TestPageWidget extends StatelessWidget {
             onTap: () {
               MyDialog<int> //
                       .alertYes(
-                message: "null",
+                message: "sdfsdf",
                 onNegativeClick: (c, dialog) {
-                  dialog.pop(c, 123);
+                  return 123;
                 },
               ) //
                   .show(context: context) //
                   .then((value) {
-                print("$value===============");
+                print("$value===============??");
               });
             }),
       ],

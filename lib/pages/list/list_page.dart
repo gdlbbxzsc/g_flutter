@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:g_flutter/base/list/refresh_viewmodel.dart';
 import 'package:g_flutter/base/mvvm/view.dart';
-import 'package:g_flutter/base/mvvm/view_model.dart';
-import 'package:g_flutter/pages/list/refresh_viewmodel.dart';
 import 'package:g_flutter/pages/list/viewmodel.dart';
 import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';

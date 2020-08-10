@@ -68,9 +68,6 @@ class _MainTabPageState extends State<MainTabPageWidget> {
           ),
           onPressed: () {
             _controller.jumpToPage(_centerIndex);
-//            setState(() {
-//              this._currentIndex = centerIndex;
-//            });
           },
         ));
   }
@@ -83,13 +80,7 @@ class _MainTabPageState extends State<MainTabPageWidget> {
       itemBuilder: (context, index) {
         return tabs[index]["page"];
       },
-      onPageChanged: (index) {
-//        if (index != _currentIndex) {
-//          setState(() {
-//            _currentIndex = index;
-//          });
-//        }
-      },
+      onPageChanged: (index) {},
     );
   }
 

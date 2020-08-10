@@ -1,5 +1,5 @@
+import 'package:g_flutter/base/list/refresh_viewmodel.dart';
 import 'package:g_flutter/base/mvvm/view_model.dart';
-import 'package:g_flutter/pages/list/refresh_viewmodel.dart';
 
 import 'model.dart';
 

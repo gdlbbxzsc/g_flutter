@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 class ListPageWidget extends AppBarMultiProviderWidget {
   @override
   String title() {
-    return "列表";
+    return "列表1";
   }
 
   @override

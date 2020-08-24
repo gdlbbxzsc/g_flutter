@@ -26,6 +26,11 @@ class LoginPageWidget extends MultiProviderWidget {
   }
 
   @override
+  void beforeBuild() {
+    super.beforeBuild();
+  }
+
+  @override
   Widget buildView(BuildContext context) {
     var vm = getViewModel<LoginViewModel>(context);
     return Scaffold(

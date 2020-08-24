@@ -8,6 +8,8 @@ abstract class BaseWidget extends StatelessWidget {
   const BaseWidget({Key key}) : super(key: key);
 
   Widget buildView(BuildContext context);
+
+  void beforeBuild() {}
 }
 
 ///////////////////////////////////////
@@ -16,6 +18,9 @@ abstract class MultiProviderWidget extends BaseWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future(() {
+      beforeBuild();
+    });
     return MultiProvider(
       providers: createProviders(context),
       child: SafeArea(child: Builder(builder: buildView)),
@@ -34,6 +39,9 @@ abstract class ChangeNotifierProviderWidget<T extends BaseViewModel>
 
   @override
   Widget build(BuildContext context) {
+    Future(() {
+      beforeBuild();
+    });
     return ChangeNotifierProvider<T>.value(
       value: createViewModel(context),
       child: SafeArea(child: Builder(builder: buildView)),

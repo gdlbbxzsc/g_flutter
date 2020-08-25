@@ -47,15 +47,16 @@ class Routes {
 //    }
 //  }
 
-  static void goWelcomeGuidePageWidget(BuildContext context) {
-    Navigator.pushNamed(context, WELCOME_GUIDE_PAGEWIDGET);
+  static Future<T> goWelcomeGuidePageWidget<T extends Object>(
+      BuildContext context) {
+    return Navigator.pushNamed<T>(context, WELCOME_GUIDE_PAGEWIDGET);
   }
 
-  static void goLoginPageWidget(BuildContext context) {
-    Navigator.pushNamed(context, LOGIN_PAGEWIDGET);
+  static Future<T> goLoginPageWidget<T extends Object>(BuildContext context) {
+    return Navigator.pushNamed<T>(context, LOGIN_PAGEWIDGET);
   }
 
-  static void goListPageWidget(BuildContext context) {
-    Navigator.pushNamed(context, LIST_PAGEWIDGET);
+  static Future<T> goListPageWidget<T extends Object>(BuildContext context) {
+    return Navigator.pushNamed<T>(context, LIST_PAGEWIDGET);
   }
 }

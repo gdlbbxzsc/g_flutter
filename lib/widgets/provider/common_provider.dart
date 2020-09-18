@@ -24,6 +24,7 @@ class MyChangeNotifierProxyProvider<T, R extends ChangeNotifier>
 
 //对provider selector的封装
 //当监听对象为null，能够返回默认结果省去空判断
+//shouldRebuild使用时要慎重，如果它结果为true时的判断要优先于数据比对，如强制返回true，就算数据没有变化也会刷新
 class SelectorM<O extends Object, R extends Object> extends Selector<O, R> {
   SelectorM({
     Function(BuildContext context, R value, Widget child) builder,

@@ -38,10 +38,7 @@ class SelectorM<O extends Object, R extends Object> extends Selector<O, R> {
             if (res == null) return def;
             return res;
           },
-          shouldRebuild: (pre, nxt) {
-            if (shouldRebuild != null) return shouldRebuild(pre, nxt);
-            return true;
-          },
+          shouldRebuild: shouldRebuild,
         );
 }
 

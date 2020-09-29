@@ -7,11 +7,14 @@ class MyAppBar extends AppBar {
       {Color titleColor = Colors.black,
       Color backgroundColor = Colors.white,
       Widget leading,
+      List<Widget> actions,
       PreferredSizeWidget bottom})
       : super(
+            shadowColor: Colors.transparent,
             backgroundColor: backgroundColor,
             leading: leading,
             centerTitle: true,
+            actions: actions,
             title: new Text(
               text,
               style: TextStyle(fontSize: 18, color: titleColor),
@@ -58,6 +61,21 @@ class MyAppBar extends AppBar {
       : this(text,
             titleColor: titleColor,
             backgroundColor: backgroundColor,
+            bottom: bottom);
+
+  MyAppBar.backBlackRight(String text, Widget right,
+      {titleColor = Colors.black,
+      backgroundColor = Colors.white,
+      onBackPressed,
+      bottom})
+      : this(text,
+            titleColor: titleColor,
+            backgroundColor: backgroundColor,
+            leading: BackButtonIos(
+              color: titleColor,
+              onPressed: onBackPressed,
+            ),
+            actions: <Widget>[right],
             bottom: bottom);
 }
 

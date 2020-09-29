@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:g_flutter/application.dart';
-import 'package:g_flutter/pages/main_tab_page.dart';
 import 'package:g_flutter/route.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +29,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainTabPageWidget(),
+      //initialRoute 优先级高于 home
+      // home: MainTabPageWidget(),
+      initialRoute: Routes.MAIN_TAB_PAGEWIDGET,
       routes: Routes.routes,
       localizationsDelegates: [
         GlobalEasyRefreshLocalizations.delegate,

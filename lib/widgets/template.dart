@@ -73,3 +73,47 @@ Widget _createSwiper() {
 //  check = !check;
 //  notifyListeners();
 //}
+
+
+
+
+// class _RadioWidget extends StatelessWidget {
+//   final String title;
+//   final int value;
+//   final Function() onTap;
+//
+//   const _RadioWidget({Key key, this.title, this.onTap, this.value})
+//       : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisSize: MainAxisSize.min,
+//       children: [
+//         SizedBox(
+//           width: 18,
+//           height: 18,
+//           child: SelectorI<CarMngAddViewModel>(
+//             builder: (c, data, _) {
+//               return Radio<int>(
+//                 value: value,
+//                 groupValue: data,
+//                 onChanged: (value) {
+//                   onTap();
+//                 },
+//               );
+//             },
+//             selector: (c, vm) {
+//               return vm.carCardType;
+//             },
+//           ),
+//         ),
+//         SizedBox(width: 3),
+//         InkWell(
+//           child: CommonText.black16(title),
+//           onTap: onTap,
+//         ),
+//       ],
+//     );
+//   }
+// }

@@ -67,7 +67,14 @@ compileOptions {
 //其他配置 AndroidManifest app router 等 
 ——————————————————————————————————————
 Builder和StatefulBuilder 相当于 stateless stateful 的匿名方式 可以有效的缩小context范围。
-Provider.of<ViewModel>(context, listen: false).run() 取数据不刷新 
+Provider.of<ViewModel>(context, listen: false).run() 取数据不刷新
+
+https://blog.csdn.net/qq_35213388/article/details/103429655
+在E:\Repository\Flutter\flutter\bin\cache\artifacts\gradle_wrapper gradlew.bat
+和
+项目下 gradlew.bat里 set APP_HOME=%DIRNAME%行下添加
+set GRADLE_OPTS="-Dgradle.user.home=D:\dev\.gradle"
+
 ——————————————————————————————————————
 https://github.com/yang7229693/flutter-study/tree/master/post 控件解释
 https://juejin.im/post/5e94e4d3f265da480836b943 挺不错

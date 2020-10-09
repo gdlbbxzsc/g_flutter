@@ -7,9 +7,9 @@ class RefreshViewModel<T extends Object> extends BaseViewModel {
   bool bottomBouncing = false;
   List<T> dataList = List();
 
-  final int pageSize = 50;
-
   int _page_num = 1;
+
+  int dataChangeCount = 0;
 
   final Future<List<T>> Function() onloadDatas;
 
@@ -71,7 +71,7 @@ class RefreshViewModel<T extends Object> extends BaseViewModel {
     }
     List<T> list = tempList;
 
-    if (list == null || list.isEmpty || list.length < pageSize) {
+    if (list == null || list.isEmpty) {
       _page_num = -1;
       topBouncing = true;
       bottomBouncing = false;
@@ -89,6 +89,11 @@ class RefreshViewModel<T extends Object> extends BaseViewModel {
 
     controller.finishRefresh(success: true);
     controller.finishLoad(success: true);
+    notifyListeners();
+  }
+
+  void refresh() {
+    dataChangeCount++;
     notifyListeners();
   }
 }

@@ -3,7 +3,7 @@ import 'package:g_flutter/base/list/refresh_viewmodel.dart';
 import 'package:g_flutter/base/mvvm/view.dart';
 import 'package:g_flutter/pages/list/viewmodel.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
-import 'package:g_flutter/widgets/custom/refreshlistview.dart';
+import 'package:g_flutter/widgets/custom/refresh_listview.dart';
 import 'package:g_flutter/widgets/provider/common_provider.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';

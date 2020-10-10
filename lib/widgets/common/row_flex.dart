@@ -34,7 +34,7 @@ class RowFlex extends StatelessWidget {
           top: false,
         );
 
-  RowFlex.titleContents(String leftChildText, List<Widget> rightChildren,
+  RowFlex.titleWidgets(String leftChildText, List<Widget> rightChildren,
       {Key key,
       int leftFlex = 1,
       int rightFlex = 3,

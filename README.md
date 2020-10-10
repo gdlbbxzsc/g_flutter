@@ -3,9 +3,9 @@
 CNNIC			 http://mirrors.cnnic.cn/dart-pub						http://mirrors.cnnic.cn/flutter
 腾讯云开源镜像站 https://mirrors.cloud.tencent.com/dart-pub		https://mirrors.cloud.tencent.com/flutter
 					 https://pub.flutter-io.cn								https://storage.flutter-io.cn
-插件 https://pub.dev/flutter/packages git https://github.com/flutter 书 https://flutter.cn/docs https://book.flutterchina.club https://dart.dev/web
+插件 https://pub.dev/flutter/packages git https://github.com/flutter 书 https://flutter.cn/docs
 论坛 https://juejin.im/tag/Flutter https://segmentfault.com/t/flutter
-闲鱼 https://www.yuque.com/xytech/flutter https://www.jianshu.com/u/cf5c0e4b1111 
+闲鱼 https://www.yuque.com/xytech/flutter
 ——————————————————————————————————————
 flutter pub global activate webdev  安装webdev
 flutter pub global run webdev  运行webdev
@@ -76,9 +76,6 @@ https://blog.csdn.net/qq_35213388/article/details/103429655
 set GRADLE_OPTS="-Dgradle.user.home=D:\dev\.gradle"
 
 ——————————————————————————————————————
-https://github.com/yang7229693/flutter-study/tree/master/post 控件解释
-https://juejin.im/post/5e94e4d3f265da480836b943 挺不错
-https://www.cnblogs.com/yangyxd/p/11685964.html  https://www.jianshu.com/p/ebacfefce46f 导图
 https://blog.csdn.net/qq_28268507/article/details/104757530?fps=1&locationNum=2  https://www.jianshu.com/p/3dd00f9821b6 fish redux
 https://www.cnblogs.com/webcabana/p/12149972.html provider解释
 https://blog.csdn.net/u011272795/article/details/83010974  http://www.imooc.com/article/286318 FutureBuilder可以配合网络请求刷新界面

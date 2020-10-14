@@ -65,6 +65,12 @@ compileOptions {
 //native端 app build.gradle
 	    implementation project(':flutter_boost')
 //其他配置 AndroidManifest app router 等 
+——————————————————————————————————————flutter混合
+flutter混合打包如果报错：
+If your error says debug/libs.jar, build --debug then --release.
+If your error says profile/libs.jar, build --profile then --release
+在 flutter module 目录下 cmd 命令 flutter build apk --profile
+然后在打包
 ——————————————————————————————————————
 Builder和StatefulBuilder 相当于 stateless stateful 的匿名方式 可以有效的缩小context范围。
 Provider.of<ViewModel>(context, listen: false).run() 取数据不刷新

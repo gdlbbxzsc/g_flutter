@@ -29,17 +29,13 @@ class TestPageWidget extends StatelessWidget {
         MyButton.forMyDialog(
             text: "dialog",
             onTap: () {
-              MyDialog<int> //
-                      .alertYes(
+              MyDialog //
+                  .alertYes(
                 message: "sdfsdf",
-                onNegativeClick: (c, dialog) {
-                  return 123;
+                onNegativeClick: () {
+                  Navigator.pop(context);
                 },
-              ) //
-                  .show(context: context) //
-                  .then((value) {
-                print("$value===============??");
-              });
+              ).show(context: context);
             }),
       ],
     );

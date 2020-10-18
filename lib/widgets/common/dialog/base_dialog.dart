@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class BaseDialog<T> extends Dialog {
+abstract class BaseDialog extends Dialog {
   const BaseDialog({Key key}) : super(key: key);
 
   @override
@@ -14,7 +14,7 @@ abstract class BaseDialog<T> extends Dialog {
     );
   }
 
-  Future<T> show({
+  Future<dynamic> show({
     @required BuildContext context,
     WidgetBuilder builder,
     bool barrierDismissible = true,
@@ -26,15 +26,17 @@ abstract class BaseDialog<T> extends Dialog {
     return showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
-      barrierColor: barrierColor,
-      useSafeArea: useSafeArea,
+      // barrierColor: barrierColor,
+      // useSafeArea: useSafeArea,
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
       builder: (BuildContext context) => this,
-    );
+    ).then((value) {
+      return doThen(value);
+    });
   }
 
-  void pop(BuildContext context, [T result]) {
+  void pop(BuildContext context, [bool result]) {
     Navigator.pop(context, result);
   }
 
@@ -89,4 +91,6 @@ abstract class BaseDialog<T> extends Dialog {
   }
 
   List<Widget> buildView(BuildContext context);
+
+  void doThen(bool b);
 }

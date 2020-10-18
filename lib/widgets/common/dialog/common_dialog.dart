@@ -5,15 +5,15 @@ import 'package:g_flutter/widgets/common/dialog/base_dialog.dart';
 import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
 
-class MyDialog<T> extends BaseDialog<T> {
+class MyDialog extends BaseDialog {
   String title;
   String message;
 
   String negativeText;
-  T Function(BuildContext dialogContext, MyDialog dialog) onNegativeClick;
+  void Function() onNegativeClick;
 
   String positiveText;
-  T Function(BuildContext dialogContext, MyDialog dialog) onPositiveClick;
+  void Function() onPositiveClick;
 
   MyDialog.alertYes({
     Key key,
@@ -81,6 +81,15 @@ class MyDialog<T> extends BaseDialog<T> {
     ];
   }
 
+  @override
+  void doThen(bool b) {
+    if (b) {
+      onPositiveClick();
+    } else {
+      onNegativeClick();
+    }
+  }
+
   Widget _buildBottomButtonGroup(context) {
     var buttons = <Widget>[];
     if (negativeText != null && negativeText.isNotEmpty)
@@ -102,11 +111,7 @@ class MyDialog<T> extends BaseDialog<T> {
       child: MyButton.forMyDialog(
         text: negativeText,
         onTap: () {
-          T res;
-          if (onNegativeClick != null) {
-            res = onNegativeClick(context, this);
-          }
-          pop(context, res);
+          pop(context, false);
         },
       ),
     );
@@ -118,11 +123,7 @@ class MyDialog<T> extends BaseDialog<T> {
       child: MyButton.forMyDialog(
         text: positiveText,
         onTap: () {
-          T res;
-          if (onPositiveClick != null) {
-            res = onPositiveClick(context, this);
-          }
-          pop(context, res);
+          pop(context, true);
         },
       ),
     );

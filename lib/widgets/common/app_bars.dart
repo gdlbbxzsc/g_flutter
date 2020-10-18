@@ -10,7 +10,7 @@ class MyAppBar extends AppBar {
       List<Widget> actions,
       PreferredSizeWidget bottom})
       : super(
-            shadowColor: Colors.transparent,
+            // shadowColor: Colors.transparent,
             backgroundColor: backgroundColor,
             leading: leading,
             centerTitle: true,

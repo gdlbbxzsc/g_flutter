@@ -81,6 +81,7 @@ https://blog.csdn.net/qq_35213388/article/details/103429655
 项目下 gradlew.bat里 set APP_HOME=%DIRNAME%行下添加
 set GRADLE_OPTS="-Dgradle.user.home=D:\dev\.gradle"
 
+输入框 高度 border: UnderlineInputBorder(borderSide: BorderSide.none),选择这个输入框会好一点
 ——————————————————————————————————————
 https://blog.csdn.net/qq_28268507/article/details/104757530?fps=1&locationNum=2  https://www.jianshu.com/p/3dd00f9821b6 fish redux
 https://www.cnblogs.com/webcabana/p/12149972.html provider解释

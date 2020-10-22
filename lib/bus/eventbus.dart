@@ -16,7 +16,7 @@ class EventBus {
   var _emap = new Map<Object, List<EventCallback>>();
 
   //添加订阅者
-  void post(eventName, EventCallback f) {
+  void register(eventName, EventCallback f) {
     if (eventName == null || f == null) return;
     _emap[eventName] ??= new List<EventCallback>();
     _emap[eventName].add(f);
@@ -36,7 +36,7 @@ class EventBus {
   }
 
   //触发事件，事件触发后该事件所有订阅者会被调用
-  void register(eventName, [arg]) {
+  void post(eventName, [arg]) {
     var list = _emap[eventName];
     if (list == null) return;
     int len = list.length - 1;

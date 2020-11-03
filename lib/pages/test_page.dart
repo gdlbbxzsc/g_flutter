@@ -33,7 +33,7 @@ class TestPageWidget extends StatelessWidget {
             onTap: () {
               MyDialog //
                   .alertYes(
-                message: "sdfsdf",
+                message: "test test",
                 onNegativeClick: () {
                   Navigator.pop(context);
                 },
@@ -43,7 +43,7 @@ class TestPageWidget extends StatelessWidget {
             text: "list dialog",
             onTap: () {
               SingleChooseListDialog<String>(
-                      ["aaaa111", "aaaa222", "aaa333a", "aa444aa", "aa555aa"],
+                      ["test1", "git", "lib", "error", "succ"],
                       (data, index) {
                 return MyText.black16(data);
               }, (data, index) {

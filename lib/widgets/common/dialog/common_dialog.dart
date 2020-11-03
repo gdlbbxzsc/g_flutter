@@ -5,7 +5,7 @@ import 'package:g_flutter/widgets/common/dialog/base_dialog.dart';
 import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
 
-class MyDialog extends BaseDialog {
+class MyDialog extends BaseDialog<bool> {
   String title;
   String message;
 
@@ -82,8 +82,8 @@ class MyDialog extends BaseDialog {
   }
 
   @override
-  void doThen(bool b) {
-    if (b) {
+  void doThen(bool res) {
+    if (res) {
       onPositiveClick();
     } else {
       onNegativeClick();

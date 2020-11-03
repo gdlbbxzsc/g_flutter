@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g_flutter/route.dart';
 import 'package:g_flutter/widgets/common/buttons.dart';
 import 'package:g_flutter/widgets/common/dialog/common_dialog.dart';
+import 'package:g_flutter/widgets/common/dialog/list_dialog.dart';
 
 class TestPageWidget extends StatelessWidget {
   @override
@@ -36,6 +37,13 @@ class TestPageWidget extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ).show(context: context);
+            }),
+        MyButton.forMyDialog(
+            text: "list dialog",
+            onTap: () {
+              ListDialog //
+                      .alertYes()
+                  .show(context: context);
             }),
       ],
     );

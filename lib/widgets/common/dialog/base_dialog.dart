@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class BaseDialog extends Dialog {
+abstract class BaseDialog<T> extends Dialog {
   const BaseDialog({Key key}) : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ abstract class BaseDialog extends Dialog {
     });
   }
 
-  void pop(BuildContext context, [bool result]) {
+  void pop(BuildContext context, [T result]) {
     Navigator.pop(context, result);
   }
 
@@ -92,5 +92,5 @@ abstract class BaseDialog extends Dialog {
 
   List<Widget> buildView(BuildContext context);
 
-  void doThen(bool b);
+  void doThen(T b);
 }

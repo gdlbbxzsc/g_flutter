@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:g_flutter/route.dart';
 import 'package:g_flutter/widgets/common/buttons.dart';
 import 'package:g_flutter/widgets/common/dialog/common_dialog.dart';
-import 'package:g_flutter/widgets/common/dialog/list_dialog.dart';
+import 'package:g_flutter/widgets/common/dialog/single_choose_list_dialog.dart';
+import 'package:g_flutter/widgets/common/texts.dart';
 
 class TestPageWidget extends StatelessWidget {
   @override
@@ -41,8 +42,13 @@ class TestPageWidget extends StatelessWidget {
         MyButton.forMyDialog(
             text: "list dialog",
             onTap: () {
-              ListDialog //
-                      .alertYes()
+              SingleChooseListDialog<String>(
+                      ["aaaa111", "aaaa222", "aaa333a", "aa444aa", "aa555aa"],
+                      (data, index) {
+                return MyText.black16(data);
+              }, (data, index) {
+                // Toast.show(context: context, message: data);
+              })
                   .show(context: context);
             }),
       ],

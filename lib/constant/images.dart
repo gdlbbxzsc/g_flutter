@@ -6,6 +6,14 @@ class Ci {
   final String _imgName;
 
   const Ci(this._imgName);
+ 
+  String get png {
+    return PATH_IMAGE_ROOT + _imgName + IMAGE_SUF_PNG;
+  }
+
+  String get jpg {
+    return PATH_IMAGE_ROOT + _imgName + IMAGE_SUF_JPG;
+  }
 
   String get png1 {
     return _imgName.img.png;
@@ -13,14 +21,6 @@ class Ci {
 
   String get jpg1 {
     return _imgName.img.jpg;
-  }
-
-  String get png {
-    return PATH_IMAGE_ROOT + _imgName + IMAGE_SUF_PNG;
-  }
-
-  String get jpg {
-    return PATH_IMAGE_ROOT + _imgName + IMAGE_SUF_JPG;
   }
 }
 

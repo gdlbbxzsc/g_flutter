@@ -3,6 +3,7 @@ import 'package:g_flutter/route.dart';
 import 'package:g_flutter/widgets/common/buttons.dart';
 import 'package:g_flutter/widgets/common/dialog/common_dialog.dart';
 import 'package:g_flutter/widgets/common/dialog/single_choose_list_dialog.dart';
+import 'package:g_flutter/widgets/common/lines.dart';
 import 'package:g_flutter/widgets/common/texts.dart';
 
 class TestPageWidget extends StatelessWidget {
@@ -15,19 +16,19 @@ class TestPageWidget extends StatelessWidget {
             onTap: () {
               Routes.goListPageWidget(context);
             }),
-        SizedBox(height: 10),
+        Line.H(),
         MyButton.forMyDialog(
             text: "goLoginPageWidget",
             onTap: () {
               Routes.goLoginPageWidget(context);
             }),
-        SizedBox(height: 10),
+        Line.H(),
         MyButton.forMyDialog(
             text: "goWelcomeGuidePageWidget",
             onTap: () {
               Routes.goWelcomeGuidePageWidget(context);
             }),
-        SizedBox(height: 10),
+        Line.H(),
         MyButton.forMyDialog(
             text: "dialog",
             onTap: () {
@@ -39,18 +40,21 @@ class TestPageWidget extends StatelessWidget {
                 },
               ).show(context: context);
             }),
+        Line.H(),
         MyButton.forMyDialog(
-            text: "list dialog",
-            onTap: () {
-              SingleChooseListDialog<String>(
-                      ["test1", "git", "lib", "error", "succ"],
-                      (data, index) {
+          text: "list dialog",
+          onTap: () {
+            SingleChooseListDialog<String>(
+              datas: ["test1", "git", "lib", "error", "succ"],
+              onCreateItem: (data, index) {
                 return MyText.black16(data);
-              }, (data, index) {
+              },
+              onChoose: (data, index) {
                 // Toast.show(context: context, message: data);
-              })
-                  .show(context: context);
-            }),
+              },
+            ).show(context: context);
+          },
+        ),
       ],
     );
   }

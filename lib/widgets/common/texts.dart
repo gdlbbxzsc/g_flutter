@@ -4,52 +4,19 @@ import 'package:flutter/material.dart';
 class MyText extends Text {
   const MyText(String data) : super(data);
 
-  const MyText.black13(String data)
-      : super(data, style: const TextStyle(fontSize: 13, color: Colors.black));
-
-  const MyText.black16(String data)
-      : super(data, style: const TextStyle(fontSize: 16, color: Colors.black));
-
-  const MyText.black16Multiple(String data, int maxLines)
-      : super(data,
+  MyText.black16(
+    String data, {
+    int maxLines,
+    TextAlign textAlign = TextAlign.start,
+    FontWeight fontWeight = FontWeight.w400,
+  }) : super(data,
             maxLines: maxLines,
-            style: const TextStyle(fontSize: 16, color: Colors.black));
-
-  const MyText.black16Center(String data)
-      : super(data,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 16, color: Colors.black));
-
-  const MyText.black18(String data)
-      : super(data, style: const TextStyle(fontSize: 18, color: Colors.black));
-
-  const MyText.black22(String data)
-      : super(data,
-            style: const TextStyle(
-                fontSize: 22,
-                color: Colors.black,
-                fontWeight: FontWeight.w700));
-
-  const MyText.white13(String data)
-      : super(data, style: const TextStyle(fontSize: 13, color: Colors.white));
-
-  const MyText.grey13(String data)
-      : super(data, style: const TextStyle(fontSize: 13, color: Colors.grey));
-
-  const MyText.grey16(String data)
-      : super(data, style: const TextStyle(fontSize: 16, color: Colors.grey));
-
-  const MyText.red13(String data)
-      : super(data, style: const TextStyle(fontSize: 13, color: Colors.red));
-
-  const MyText.red16(String data)
-      : super(data, style: const TextStyle(fontSize: 16, color: Colors.red));
-
-  const MyText.red26(String data)
-      : super(data, style: const TextStyle(fontSize: 26, color: Colors.red));
-
-  const MyText.yellow16(String data)
-      : super(data, style: const TextStyle(fontSize: 16, color: Colors.yellow));
+            textAlign: textAlign,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+              fontWeight: fontWeight,
+            ));
 
   const MyText.high(String data)
       : super(data,

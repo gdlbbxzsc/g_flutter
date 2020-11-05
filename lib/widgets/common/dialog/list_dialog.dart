@@ -7,7 +7,7 @@ class ListDialog<T> extends BaseListDialog<int> {
   final Widget Function(T data, int index) onCreateItem;
   final void Function(T data, int index) onItemClick;
 
-  ListDialog(this.dataList, this.onCreateItem, this.onItemClick);
+  ListDialog({this.dataList, this.onCreateItem, this.onItemClick});
 
   @override
   ListView makeListView(context) {

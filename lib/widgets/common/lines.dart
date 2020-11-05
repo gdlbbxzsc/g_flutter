@@ -1,29 +1,85 @@
 import 'package:flutter/material.dart';
 
 //一条实线
-class Line extends SizedBox {
-  Line(
-      {double width = double.infinity,
-      double height = 1,
-      Color color = const Color(0xFFD6D6D6)})
-      : super(
-          width: width,
-          height: height,
-          child: DecoratedBox(decoration: BoxDecoration(color: color)),
-        );
+class Line extends StatelessWidget {
+  final double width;
+
+  final double height;
+
+  final Color color;
+
+  final Color bgColor;
+
+  final double marginV;
+  final double marginH;
+
+  const Line.H({
+    Key key,
+    this.width = double.infinity,
+    this.height = 1,
+    this.color,
+    this.bgColor,
+    this.marginV = 0,
+    this.marginH = 0,
+  }) : super(key: key);
+
+  const Line.V({
+    Key key,
+    this.width = 1,
+    this.height = double.infinity,
+    this.color,
+    this.bgColor,
+    this.marginV = 0,
+    this.marginH = 0,
+  }) : super(key: key);
+
+  const Line(
+      {Key key,
+      this.width,
+      this.height,
+      this.color,
+      this.bgColor,
+      this.marginV = 0,
+      this.marginH = 0})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      color: bgColor,
+      padding: EdgeInsets.symmetric(vertical: (marginV), horizontal: marginH),
+      child: DecoratedBox(decoration: BoxDecoration(color: color)),
+    );
+  }
 }
 
-class LineV extends SizedBox {
-  LineV(
-      {double width = 1,
-      double height = double.infinity,
-      Color color = const Color(0xFFD6D6D6)})
-      : super(
-          width: width,
-          height: height,
-          child: DecoratedBox(decoration: BoxDecoration(color: color)),
-        );
-}
+// class Line extends SizedBox {
+//   Line({
+//     double width = double.infinity,
+//     double height = 1,
+//     Color color = const Color(0xFFD6D6D6),
+//     Color bgColor = const Color(0x00000000),
+//     double margin = 0,
+//   }) : super(
+//           width: width,
+//           height: height,
+//           child: DecoratedBox(decoration: BoxDecoration(color: color)),
+//         );
+// }
+//
+// class LineV extends SizedBox {
+//   LineV(
+//       {double width = 1,
+//       double height = double.infinity,
+//       Color color = const Color(0xFFD6D6D6)})
+//       : super(
+//           width: width,
+//           height: height,
+//           child: DecoratedBox(decoration: BoxDecoration(color: color)),
+//         );
+// }
 
 ///通过文字删除线实现虚线
 class LineDashText extends StatelessWidget {

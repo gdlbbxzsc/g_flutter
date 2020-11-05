@@ -62,7 +62,7 @@ class MyDialog extends BaseDialog<bool> {
           children: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(12.0),
-              child: MyText.black18(title),
+              child: MyText.black16(title),
             ),
             Line(
               color: Color(0xffe0e0e0),

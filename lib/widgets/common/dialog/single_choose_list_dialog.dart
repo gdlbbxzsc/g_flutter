@@ -5,14 +5,22 @@ import 'package:g_flutter/widgets/provider/common_provider.dart';
 import 'package:provider/provider.dart';
 
 class SingleChooseListDialog<T> extends BaseListDialog<int> {
-  final List<T> dataList;
+  final int lastPos;
+  final List<T> datas;
   final Widget Function(T data, int index) onCreateItem;
   final void Function(T data, int index) onChoose;
 
-  SingleChooseListDialog(this.dataList, this.onCreateItem, this.onChoose);
+  SingleChooseListDialog({
+    this.lastPos,
+    this.datas,
+    this.onCreateItem,
+    this.onChoose,
+  });
 
   @override
   ListView makeListView(context) {
+    Provider.of<ListDialogViewModel>(context, listen: false)
+        .changgeChoose(lastPos);
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (BuildContext context, int index) {
@@ -42,7 +50,7 @@ class SingleChooseListDialog<T> extends BaseListDialog<int> {
                 ),
               ),
               SizedBox(width: 3),
-              onCreateItem(dataList[index], index),
+              onCreateItem(datas[index], index),
             ],
           ),
           onTap: () {
@@ -51,7 +59,7 @@ class SingleChooseListDialog<T> extends BaseListDialog<int> {
           },
         );
       },
-      itemCount: dataList.length,
+      itemCount: datas.length,
     );
   }
 
@@ -72,6 +80,6 @@ class SingleChooseListDialog<T> extends BaseListDialog<int> {
 
   @override
   void doThen(int res) {
-    onChoose(dataList[res], res);
+    onChoose(datas[res], res);
   }
 }

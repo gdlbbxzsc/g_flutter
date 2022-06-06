@@ -20,7 +20,7 @@ class SingleChooseListDialog<T> extends BaseListDialog<int> {
   @override
   ListView makeListView(context) {
     Provider.of<ListDialogViewModel>(context, listen: false)
-        .changgeChoose(lastPos);
+        .setChoose(lastPos);
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (BuildContext context, int index) {

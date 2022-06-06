@@ -65,4 +65,8 @@ class ListDialogViewModel extends ContentViewModel {
     this.index = index;
     notifyListeners();
   }
+  void setChoose(int index) {
+    if (this.index == index) return;
+    this.index = index;
+  }
 }

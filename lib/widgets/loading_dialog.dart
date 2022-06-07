@@ -66,6 +66,7 @@ class LoadingDialog {
     Overlay.of(context).insert(_overlayEntry);
     //两秒后，移除
     new Future.delayed(Duration(seconds: 10)).then((value) {
+      if (_overlayEntry == null) return;
       _overlayEntry.remove();
       alertDialog(context, '请求超时，请稍后尝试');
     });
@@ -105,7 +106,7 @@ class LoadingDialog {
           semanticLabel: '',
           // 设置成 圆角
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         );
       },
     );

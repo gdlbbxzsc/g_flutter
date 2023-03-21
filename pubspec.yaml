@@ -30,7 +30,7 @@ dependencies:
   provider: ^4.0.4
   flutter_screenutil: ^1.0.2 #屏幕适配
   #  一下两个网络框架，若是web则选择http，若是终端则随意
-  dio: ^2.0.7 #网络
+  dio: ^5.0.3 #网络
   #  http: ^0.12.1
   shared_preferences: ^0.5.7+3 #数据存储，期望以后能够三端支持
   flutter_easyrefresh: ^2.1.1 #下拉刷新上拉加载
